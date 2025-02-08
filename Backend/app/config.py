@@ -40,7 +40,7 @@ class Development(Default):
     """Class containing the settings of the development environment.
 
     It uses the dotenv library to load some values from the .env file to environment.
-    After that, theses values are load from the environment to be use in the internal Flask config.
+    After that, these values are load from the environment to be use in the internal Flask config.
 
     Constants:
         SECRET_KEY (str): The application secret key used to encrypt your cookies.

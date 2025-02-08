@@ -10,7 +10,7 @@ from datetime import datetime
 from sqlalchemy import inspect
 from sqlalchemy import Column, Integer, String, Boolean, DateTime
 
-from app.database import Base
+from Backend.app.database import Base
 
 
 class Model:

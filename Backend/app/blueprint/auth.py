@@ -6,12 +6,12 @@ from flask import (
     current_app, abort, Blueprint, request, Response, make_response, jsonify
 )
 from flask_jwt_extended import (
-    jwt_required, create_access_token, create_refresh_token, get_raw_jwt,
-    jwt_refresh_token_required, get_jwt_identity
+    jwt_required, create_access_token, create_refresh_token, get_jwt,
+    get_jwt_identity
 )
-from app.exceptions import TokenNotFound
-from app.model import User, Token
-from app.model import UserRepository, TokenRepository
+from Backend.app.exceptions import TokenNotFound
+from Backend.app.model import User, Token
+from Backend.app.model import UserRepository, TokenRepository
 
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
@@ -96,7 +96,7 @@ def login() -> Response:
 
 
 @bp.route('/refresh', methods=['POST'])
-@jwt_refresh_token_required
+@jwt_required(refresh=True)
 def refresh():
     """Create a new access token.
 

@@ -5,7 +5,7 @@ from datetime import datetime
 from sqlalchemy.orm.exc import NoResultFound
 from flask_jwt_extended import decode_token
 
-from app.exceptions import TokenNotFound
+from Backend.app.exceptions import TokenNotFound
 
 from .models import (Token)
 from .repository import Repository
