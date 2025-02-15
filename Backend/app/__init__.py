@@ -1,8 +1,8 @@
-"""This package is Flask HTTP REST API Template template that already has the database bootstrap
+"""This package is Flask HTTP REST API Template that already has the database bootstrap
 implemented and also all feature related with the user authentications.
 
 Application features:
-    Python 3.7
+    Python 3.13
     Flask
     PEP-8 for code style
 
@@ -21,7 +21,7 @@ from flask_jwt_extended import JWTManager
 def create_app(test_config: dict = {}) -> Flask:
     """This function is responsible to create a Flask instance according
     a previous setting passed from environment. In that process, it also
-    initialise the database source.
+    initializes the database source.
 
     Parameters:
         test_config (dict): settings coming from test environment
@@ -32,13 +32,14 @@ def create_app(test_config: dict = {}) -> Flask:
 
     app = Flask(__name__, instance_relative_config=True)
 
+
     load_config(app, test_config)
 
     init_instance_folder(app)
     init_database(app)
     init_blueprints(app)
-    #init_commands(app)
-    #init_jwt_manager(app)
+    init_commands(app)
+    init_jwt_manager(app)
 
     return app
 
@@ -98,9 +99,9 @@ def init_blueprints(app: Flask) -> None:
     register_handler(app)
 
     # error Handlers
-    from .blueprint import index, auth, account
+    from .blueprint import index, autho, account
     app.register_blueprint(index.bp)
-    #app.register_blueprint(auth.bp)
+    #app.register_blueprint(autho.bp)
     #app.register_blueprint(account.bp)
 
 def init_commands(app):

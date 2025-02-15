@@ -8,12 +8,12 @@ from flask_migrate import Migrate
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import scoped_session, sessionmaker
+from flask_sqlalchemy import SQLAlchemy
 
-
-Base = None
 engine = None
 db_session = None
 
+db = SQLAlchemy()
 
 def init(app: Flask) -> None:
     """This function initialize the SQLAlchemy ORM, providing a session
@@ -33,15 +33,16 @@ def init(app: Flask) -> None:
 
     # The declarative extension in SQLAlchemy allows to define
     # tables and models in one go, that is in the same class
-    Base = declarative_base()
-    Base.query = db_session.query_property()
 
+    db.init_app(app)
+
+    # print(Base.query)
     # attach the shutdown_session function to be execute when a request ended.
     app.teardown_appcontext(shutdown_session)
 
     # Using Flask-Migrate as the handler for database migration.
     from .model import User, Token
-    migrate = Migrate(app, Base)
+    migrate = Migrate(app, db)
 
 
 def shutdown_session(exception=None) -> None:
