@@ -31,8 +31,8 @@ class Production(Default):
         SQLALCHEMY_DATABASE_URI (str): URI for the database source.
     """
 
-    SECRET_KEY = b'\xacP=\x12\xa6\xa2\x19`\xbcu{\x0b\xe4&H\x8d'
-    JWT_SECRET_KEY = b'\xacP=\x12\xa6\xa2\x19`\xbcu{\x0b\xe4&H\x8d'
+    SECRET_KEY = b'p\xa84r!\xb0\x16@"\x840#8n9\xb4'
+    JWT_SECRET_KEY = b'p\xa84r!\xb0\x16@"\x840#8n9\xb4'
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
 
 
@@ -40,7 +40,7 @@ class Development(Default):
     """Class containing the settings of the development environment.
 
     It uses the dotenv library to load some values from the .env file to environment.
-    After that, theses values are load from the environment to be use in the internal Flask config.
+    After that, these values are load from the environment to be use in the internal Flask config.
 
     Constants:
         SECRET_KEY (str): The application secret key used to encrypt your cookies.

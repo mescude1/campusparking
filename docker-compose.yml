@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: campusparkdb
+    restart: always
+    environment:
+      POSTGRES_USER: campusparking
+      POSTGRES_PASSWORD: superdupersecret12345
+      POSTGRES_DB: campusparking
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  web:
+    build: ./Backend
+    container_name: campusparking
+    restart: always
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: "postgresql://campusparking:superdupersecret12345@db.campusparking.orb.local:5432/campusparking"
+      FLASK_ENV: "development"
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./Backend/:/Backend
+    command: [ "flask", "run" ]
+
+volumes:
+  postgres_data:

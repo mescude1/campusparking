@@ -8,9 +8,9 @@ that is in the same class.
 from datetime import datetime
 
 from sqlalchemy import inspect
-from sqlalchemy import Column, Integer, String, Boolean, DateTime
+from sqlalchemy import Integer, String, Boolean, DateTime
 
-from app.database import Base
+from Backend.app.database import db
 
 
 class Model:
@@ -31,7 +31,7 @@ class Model:
             session.expunge(self)
 
 
-class User(Base, Model):
+class User(db.Model):
     """ User's model class.
 
     Column:
@@ -46,9 +46,9 @@ class User(Base, Model):
 
     __tablename__ = 'users'
 
-    id = Column(Integer, primary_key=True)
-    username = Column(String(), unique=True)
-    password = Column(String())
+    id = db.Column(Integer, primary_key=True)
+    username = db.Column(String(), unique=True)
+    password = db.Column(String())
 
     __table_args__ = {'extend_existing': True}
 
@@ -81,7 +81,7 @@ class User(Base, Model):
         return '<User %r>' % (self.username)
 
 
-class Token(Base, Model):
+class Token(db.Model):
     """ Token's model class.
 
     Column:
@@ -102,12 +102,12 @@ class Token(Base, Model):
 
     __tablename__ = 'tokens'
 
-    id = Column(Integer, primary_key=True)
-    jti = Column(String(36), nullable=False)
-    token_type = Column(String(10), nullable=False)
-    user_identity = Column(String(50), nullable=False)
-    revoked = Column(Boolean, nullable=False)
-    expires = Column(DateTime, nullable=False)
+    id = db.Column(Integer, primary_key=True)
+    jti = db.Column(String(36), nullable=False)
+    token_type = db.Column(String(10), nullable=False)
+    user_identity = db.Column(String(50), nullable=False)
+    revoked = db.Column(Boolean, nullable=False)
+    expires = db.Column(DateTime, nullable=False)
 
     __table_args__ = {'extend_existing': True}
 

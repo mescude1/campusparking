@@ -6,18 +6,18 @@ from flask import (
     current_app, abort, Blueprint, request, Response, make_response, jsonify
 )
 from flask_jwt_extended import (
-    jwt_required, create_access_token, create_refresh_token, get_raw_jwt,
-    jwt_refresh_token_required, get_jwt_identity
+    jwt_required, create_access_token, create_refresh_token,
+    get_jwt_identity
 )
-from app.exceptions import TokenNotFound
-from app.model import User, Token
-from app.model import UserRepository, TokenRepository
+from Backend.app.exceptions import TokenNotFound
+from Backend.app.model import User, Token
+from Backend.app.model import UserRepository, TokenRepository
 
 
-bp = Blueprint('auth', __name__, url_prefix='/auth')
+bp = Blueprint('autho', __name__, url_prefix='/autho')
 
 
-@bp.route('/register', methods=('POST',))
+#@bp.route('/register', methods=('POST',))
 def register() -> Response:
     """Register a new user.
 
@@ -52,7 +52,7 @@ def register() -> Response:
     return response
 
 
-@bp.route('/login', methods=('POST',))
+#@bp.route('/login', methods=('POST',))
 def login() -> Response:
     """Login of the user by creating a valid token.
 
@@ -62,7 +62,7 @@ def login() -> Response:
 
     data = request.json
 
-    # checkint the json data
+    # checking the json data
     if not request.is_json or not data.get('username') or not data.get('password'):
         abort(400)
 
@@ -95,8 +95,8 @@ def login() -> Response:
     return response
 
 
-@bp.route('/refresh', methods=['POST'])
-@jwt_refresh_token_required
+#@bp.route('/refresh', methods=['POST'])
+@jwt_required(refresh=True)
 def refresh():
     """Create a new access token.
 
@@ -117,7 +117,7 @@ def refresh():
     }), 200)
 
 
-@bp.route('/token', methods=('GET',))
+#@bp.route('/token', methods=('GET',))
 @jwt_required
 def get_tokens():
     """Retrieve all tokens of the user.
@@ -137,7 +137,7 @@ def get_tokens():
     }), 200)
 
 
-@bp.route('/token/<int:token_id>', methods=('PUT',))
+#@bp.route('/token/<int:token_id>', methods=('PUT',))
 @jwt_required
 def modify_token(token_id: int):
     """Modifies the revocation status of a token.
