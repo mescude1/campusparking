@@ -6,7 +6,7 @@ from flask import (
     current_app, abort, Blueprint, request, Response, make_response, jsonify
 )
 from flask_jwt_extended import (
-    jwt_required, create_access_token, create_refresh_token, get_jwt,
+    jwt_required, create_access_token, create_refresh_token,
     get_jwt_identity
 )
 from Backend.app.exceptions import TokenNotFound

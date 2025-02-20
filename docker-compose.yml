@@ -21,12 +21,13 @@ services:
     depends_on:
       - db
     environment:
-      DATABASE_URL: postgresql://campusparking:superdupersecret12345@db:5432/campusparking
+      DATABASE_URL: "postgresql://campusparking:superdupersecret12345@db.campusparking.orb.local:5432/campusparking"
+      FLASK_ENV: "development"
     ports:
       - "5000:5000"
     volumes:
-      - ./Backend:/app
-    command: [ "python", "app/__init__.py" ]
+      - ./Backend/:/Backend
+    command: [ "flask", "run" ]
 
 volumes:
   postgres_data:
