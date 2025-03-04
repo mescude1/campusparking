@@ -1,1 +1,12 @@
-[]
+[
+    {
+        "model": "parking.propietario",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "celular": "3043234838",
+            "placa_carro": "ABC123",
+            "color_carro": "Rojo"
+        }
+    }
+]
