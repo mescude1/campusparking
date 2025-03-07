@@ -1,2 +1,4 @@
 Flask
-flask_jwt_extended
+flask-jwt-extended
+flask-login
+flask-wtf
