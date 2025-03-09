@@ -6,7 +6,6 @@ from flask import Flask
 from flask_migrate import Migrate
 
 from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import scoped_session, sessionmaker
 from flask_sqlalchemy import SQLAlchemy
 
@@ -41,7 +40,7 @@ def init(app: Flask) -> None:
     app.teardown_appcontext(shutdown_session)
 
     # Using Flask-Migrate as the handler for database migration.
-    from .model import User, Token
+    from .model import User
     migrate = Migrate(app, db)
 
 

@@ -15,7 +15,8 @@ to a previous configuration.
 import os
 
 from flask import Flask
-from flask_jwt_extended import JWTManager
+
+
 
 
 def create_app(test_config: dict = {}) -> Flask:
@@ -39,7 +40,7 @@ def create_app(test_config: dict = {}) -> Flask:
     init_database(app)
     init_blueprints(app)
     init_commands(app)
-    init_jwt_manager(app)
+    init_login(app)
 
     return app
 
@@ -101,15 +102,14 @@ def init_blueprints(app: Flask) -> None:
     # error Handlers
     from .blueprint import index, autho, account
     app.register_blueprint(index.bp)
-    #app.register_blueprint(autho.bp)
-    #app.register_blueprint(account.bp)
+    app.register_blueprint(autho.bp)
 
 def init_commands(app):
     from .commands import register_commands
     register_commands(app)
 
 
-def init_jwt_manager(app):
-    from .authentication import init
-    jwt = JWTManager(app)
-    init(jwt)
+def init_login(app):
+    from flask_login import LoginManager
+    login_manager = LoginManager(app)
+    login_manager.login_view = "login"  # Redirects unauthorized users to the login page
