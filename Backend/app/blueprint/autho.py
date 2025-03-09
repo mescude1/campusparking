@@ -3,13 +3,13 @@ to the '/auth' endpoint of HTTP REST API.
 """
 
 from flask import (
-    abort, Blueprint, request, Response, make_response, jsonify, redirect, url_for, flash, session
+    abort, Blueprint, request, Response, make_response, jsonify, session
 )
 
 from Backend.app.model import User
-from werkzeug.security import check_password_hash
 
-from wsgi import app
+
+from Backend.app.database import db
 
 bp = Blueprint('autho', __name__, url_prefix='/autho')
 
@@ -35,8 +35,8 @@ def register() -> Response:
         new_user.username = username
         new_user.password_hash = password
 
-        app.db.session.add(new_user)
-        app.db.session.commit()
+        db.session.add(new_user)
+        db.session.commit()
 
         session['user_id'] = new_user.id
 

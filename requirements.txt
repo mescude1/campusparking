@@ -1,4 +1,0 @@
-Flask
-flask-jwt-extended
-flask-login
-flask-wtf

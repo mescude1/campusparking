@@ -102,6 +102,7 @@ def init_blueprints(app: Flask) -> None:
     # error Handlers
     from .blueprint import index, autho, account
     app.register_blueprint(index.bp)
+    app.register_blueprint(autho.bp)
 
 def init_commands(app):
     from .commands import register_commands
