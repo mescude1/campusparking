@@ -15,6 +15,7 @@ to a previous configuration.
 import os
 
 from flask import Flask
+from flask_jwt_extended import JWTManager, get_jwt
 
 blacklisted_tokens = set()  # Simple in-memory storage (use Redis or DB in production)
 
@@ -115,8 +116,8 @@ def init_commands(app):
 
 def init_jwt(app):
     from flask_jwt_extended import (JWTManager)
-    JWTManager(app)
+    jwt = JWTManager(app)
 
-@jwt.token_in_blocklist_loader
-def check_if_token_revoked(jwt_header, jwt_payload):
-    return jwt_payload["jti"] in blacklisted_tokens
+    @jwt.token_in_blocklist_loader
+    def check_if_token_revoked(jwt_header, jwt_payload):
+        return jwt_payload["jti"] in blacklisted_tokens
