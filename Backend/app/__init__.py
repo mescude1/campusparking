@@ -15,7 +15,8 @@ to a previous configuration.
 import os
 
 from flask import Flask
-
+from flask_jwt_extended import JWTManager, get_jwt
+jwt = JWTManager(app)
 blacklisted_tokens = set()  # Simple in-memory storage (use Redis or DB in production)
 
 
