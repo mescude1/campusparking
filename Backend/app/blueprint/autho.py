@@ -5,11 +5,11 @@ to the '/auth' endpoint of HTTP REST API.
 from flask import (
     abort, Blueprint, request, Response, make_response, jsonify, session
 )
-
 from Backend.app.model import User
-
-
 from Backend.app.database import db
+from flask_jwt_extended import create_access_token, get_jwt
+from app import blacklisted_tokens
+
 
 bp = Blueprint('autho', __name__, url_prefix='/autho')
 
@@ -60,15 +60,18 @@ def login() -> Response:
 
     data = request.json
 
-    username = request.get_json()['username']
-    password = request.get_json()['password']
+    username = data.get('username')
+    password = data.get('password')
 
     user = User.query.filter(User.username == username).first()
     if user and user.authenticate(password):
         session['user_id'] = user.id
+        access_token = create_access_token(identity=user.id)
         return make_response(jsonify({
-            'user': user.to_dict(),
-            'data': {}
+            'data': {
+                'user': user.to_dict(),
+                'access_token': access_token
+            }
         }), 200)
 
     else:
@@ -77,27 +80,9 @@ def login() -> Response:
             'data': '401 Unauthorized'
         }), 401)
 
-
-@bp.route('/check-session', methods=('get',))
-def check_session() -> Response:
-        if session.get('user_id'):
-            user = User.query.filter(User.id == session['user_id']).first()
-            return make_response(jsonify({
-                'user': user.to_dict(),
-                'data': {}
-            }), 200)
-        return make_response(jsonify({
-            'status': 'error',
-            'data': '401 Unauthorized'
-        }), 401)
-
 @bp.route('/logout', methods=('POST',))
 def delete() -> Response:
-    if session.get('user_id'):
-        session['user_id'] = None
-        return make_response({}, 401)
-    else:
-        return make_response(jsonify({
-            'status': 'error',
-            'data': '401 Unauthorized'
-        }), 401)
+    jti = get_jwt()["jti"]  # Get unique token identifier
+    blacklisted_tokens.add(jti)
+
+    return make_response({}, 401)

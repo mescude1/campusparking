@@ -16,7 +16,7 @@ import os
 
 from flask import Flask
 
-
+blacklisted_tokens = set()  # Simple in-memory storage (use Redis or DB in production)
 
 
 def create_app(test_config: dict = {}) -> Flask:
@@ -40,7 +40,11 @@ def create_app(test_config: dict = {}) -> Flask:
     init_database(app)
     init_blueprints(app)
     init_commands(app)
-    init_login(app)
+    init_jwt(app)
+
+    app.config['JWT_BLACKLIST_ENABLED'] = True
+    app.config['JWT_BLACKLIST_TOKEN_CHECKS'] = ["access"]
+
 
     return app
 
@@ -109,7 +113,10 @@ def init_commands(app):
     register_commands(app)
 
 
-def init_login(app):
-    from flask_login import LoginManager
-    login_manager = LoginManager(app)
-    login_manager.login_view = "login"  # Redirects unauthorized users to the login page
+def init_jwt(app):
+    from flask_jwt_extended import (JWTManager)
+    JWTManager(app)
+
+@jwt.token_in_blocklist_loader
+def check_if_token_revoked(jwt_header, jwt_payload):
+    return jwt_payload["jti"] in blacklisted_tokens

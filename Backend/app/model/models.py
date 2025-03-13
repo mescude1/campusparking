@@ -63,3 +63,9 @@ class User(UserMixin, db.Model):
     def authenticate(self, password):
         # Check if the given password matches the stored hash
         return self._password_hash == hashlib.sha256(password.encode('utf-8')).hexdigest()
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+        }
