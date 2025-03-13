@@ -8,7 +8,7 @@ from flask import (
 from Backend.app.model import User
 from Backend.app.database import db
 from flask_jwt_extended import create_access_token, get_jwt
-from app import blacklisted_tokens
+from Backend.app import blacklisted_tokens
 
 
 bp = Blueprint('autho', __name__, url_prefix='/autho')
