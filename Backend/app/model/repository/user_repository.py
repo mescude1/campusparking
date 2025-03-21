@@ -2,8 +2,8 @@
 
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from .models import User
-from .repository import Repository
+from app.model.user import User
+from app.model.repository import Repository
 
 
 class UserRepository(Repository):
