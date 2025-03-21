@@ -1,15 +1,15 @@
 """The model layer."""
 
 from app.model.user import User
-from app.model.user import Vehicle
-from app.model.user import Service
-from app.model.user import User
-from app.model.user import User
+from app.model.vehicle import Vehicle
+from app.model.service import Service
+from app.model.contract_metadata import ContractMetadata
+from app.model.media_metadata import MediaMetadata
 
-__all__ = ["User", "Vehicle",]
+__all__ = ["User", "Vehicle", "Service", "ContractMetadata", "MediaMetadata"]
 
 """This module define all models (persistent objects - PO) of application. Each model
-is a subclasse of the Base class (base declarative) from app.model.database module.
+is a subclasses of the Base class (base declarative) from app.model.database module.
 The declarative extension in SQLAlchemy allows to define tables and models in one go,
 that is in the same class.
 """
