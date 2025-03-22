@@ -49,4 +49,7 @@ class Service(db.Model):
             'vehicle_id': self.vehicle_id,
             'contract_id': self.contract_id,
             'parking_location': self.parking_location,
+            'is_finished': self.is_finished,
+            'created_at': self.created_at,
+            'is_deleted': self.is_deleted
         }

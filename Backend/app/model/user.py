@@ -79,4 +79,16 @@ class User(UserMixin, db.Model):
         return {
             'id': self.id,
             'username': self.username,
+            'name': self.name,
+            'last_name': self.last_name,
+            'email': self.email,
+            'cellphone': self.cellphone,
+            'type': self.type,
+            'profile_img': self.profile_img,
+            'id_img': self.id_img,
+            'driver_license_img': self.driver_license_img,
+            'contract': self.contract,
+            'vehicle_type': self.vehicle_type,
+            'created_at': self.created_at,
+            'is_deleted': self.is_deleted
         }

@@ -14,7 +14,7 @@ def test_create_new_user(app):
     username = get_unique_username()
     password = '123'
 
-    from app.model.models import User
+    from app.model.user import User
 
     session = UnifiedAlchemyMagicMock()
     user = User(username=username, password=password)

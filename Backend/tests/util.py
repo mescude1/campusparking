@@ -21,7 +21,7 @@ def create_user(session):
         user: A user model object.
     """
 
-    from app.model.models import User
+    from app.model.user import User
 
     user = User()
     user.username = get_unique_username()
@@ -43,7 +43,7 @@ def get_users_count(session):
         An int value corresponding to the amount of registered user.
     """
 
-    from app.model.models import User
+    from app.model.user import User
     return session.query(User).order_by(desc(User.id)).count()
 
 
