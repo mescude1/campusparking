@@ -57,6 +57,17 @@ def get_unique_username():
     return 'user_{}'.format(get_unique_id())
 
 
+
+def get_unique_license_plate():
+    """Creates a unique username string.
+
+    Returns:
+        a string containing a unique username string.
+    """
+
+    return 'vehicle_{}'.format(get_unique_id(6))
+
+
 def get_unique_id():
     """Creates a unique ID.
 
@@ -64,7 +75,7 @@ def get_unique_id():
         a string containing a unique ID.
     """
 
-    unique = hash(time.time())
+    unique = hash(time.time(), )
 
     return unique
 

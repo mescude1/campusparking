@@ -11,6 +11,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 engine = None
 db_session = None
+Base = None
 
 db = SQLAlchemy()
 
