@@ -21,7 +21,7 @@ def create_user(session):
         user: A user model object.
     """
 
-    from app.model.models import User
+    from app.model.user import User
 
     user = User()
     user.username = get_unique_username()
@@ -43,7 +43,7 @@ def get_users_count(session):
         An int value corresponding to the amount of registered user.
     """
 
-    from app.model.models import User
+    from app.model.user import User
     return session.query(User).order_by(desc(User.id)).count()
 
 
@@ -57,6 +57,17 @@ def get_unique_username():
     return 'user_{}'.format(get_unique_id())
 
 
+
+def get_unique_license_plate():
+    """Creates a unique username string.
+
+    Returns:
+        a string containing a unique username string.
+    """
+
+    return 'vehicle_{}'.format(get_unique_id(6))
+
+
 def get_unique_id():
     """Creates a unique ID.
 
@@ -64,7 +75,7 @@ def get_unique_id():
         a string containing a unique ID.
     """
 
-    unique = hash(time.time())
+    unique = hash(time.time(), )
 
     return unique
 
