@@ -14,42 +14,6 @@ from Backend.app import blacklisted_tokens
 bp = Blueprint('autho', __name__, url_prefix='/autho')
 
 
-@bp.route('/register', methods=('POST',))
-def register() -> Response:
-    """Register a new user.
-
-    Returns:
-        response: flask.Response object with the application/json mimetype.
-    """
-
-    if not request.is_json:
-        abort(400)
-
-    data = request.get_json()
-
-    username = data.get('username')
-    password = data.get('password')
-
-    if username and password:
-        new_user = User()
-        new_user.username = username
-        new_user.password_hash = password
-
-        db.session.add(new_user)
-        db.session.commit()
-
-        session['user_id'] = new_user.id
-
-    response = make_response(jsonify({
-        'status': 'success',
-        'data': {
-            'message': "Registration successful! Please log in."
-        }
-    }), 200)
-
-    return response
-
-
 @bp.route('/login', methods=('POST',))
 def login() -> Response:
     """Login of the user by creating a valid token.
