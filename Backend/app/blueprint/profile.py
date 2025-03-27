@@ -48,3 +48,9 @@ def get_profile():
 def edit_profile():
     data = request.json
     return jsonify({'status': 'success', 'message': 'Profile updated', 'details': data}), 200
+
+@bp_profile.route('/generate-enrollment-contracts', methods=['POST'])
+@jwt_required()
+def generate_enrollment_contracts():
+    data = request.json
+    return jsonify({'status': 'success', 'message': 'Enrollment contracts generated', 'details': data}), 200
