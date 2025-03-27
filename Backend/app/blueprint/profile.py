@@ -25,18 +25,18 @@ def register():
 
     # Crear nuevo usuario
     new_user = User(
-        username=data["username"],
+        username=data.get("username"),
         _password_hash=generate_password_hash(data["password"]),  # Hasheo de contraseña
-        name=data["name"],
-        last_name=data["last_name"],
-        email=data["email"],
-        cellphone=data["cellphone"],
-        type=data["type"],
-        profile_img=data["profile_img"],
-        id_img=data["id_img"],
-        driver_license_img=data["driver_license_img"],
-        contract=data["contract"],
-        vehicle_type=data["vehicle_type"],
+        name=data.get("name"),
+        last_name=data.get("last_name"),
+        email=data.get("email"),
+        cellphone=data.get("cellphone"),
+        type=data.get("type"),
+        profile_img=data.get("profile_img"),
+        id_img=data.get("id_img"),
+        driver_license_img=data.get("driver_license_img"),
+        contract=data.get("contract"),
+        vehicle_type=data.get("vehicle_type"),
         is_deleted=False
     )
 
