@@ -1,7 +1,12 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, Response, request, jsonify, abort, make_response, session
 from flask_jwt_extended import jwt_required, get_jwt_identity
+from app import db
+from Backend.app.model import User
 
-@bp.route('/register', methods=('POST',))
+
+bp_profile = Blueprint('profile', __name__, url_prefix='/profile')
+
+@bp_profile.route('/register', methods=('POST',))
 def register() -> Response:
     """Register a new user.
 
@@ -12,30 +17,29 @@ def register() -> Response:
     if not request.is_json:
         abort(400)
 
-    user_repository = UserRepository()
+    data = request.get_json()
 
-    # creating a User object
-    user = User()
-    user.username = request.json.get('username')
-    user.password = request.json.get('password')
+    username = data.get('username')
+    password = data.get('password')
 
-    # validating the user
-    is_invalid = user_repository.is_invalid(user)
-    if not is_invalid:
-        user_repository.save(user)
-        return make_response(jsonify({
-            'status': 'success',
-            'data': user.serialize()
-        }), 200)
-    else:
-        response = make_response(jsonify({
-            'status': 'fail',
-            'data': is_invalid
-        }), 400)
+    if username and password:
+        new_user = User()
+        new_user.username = username
+        new_user.password_hash = password
+
+        db.session.add(new_user)
+        db.session.commit()
+
+        session['user_id'] = new_user.id
+
+    response = make_response(jsonify({
+        'status': 'success',
+        'data': {
+            'message': "Registration successful! Please log in."
+        }
+    }), 200)
 
     return response
-
-bp_profile = Blueprint('profile', __name__, url_prefix='/profile')
 
 @bp_profile.route('/profile', methods=['GET'])
 @jwt_required()

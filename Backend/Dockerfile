@@ -2,13 +2,14 @@
 
 FROM python:3.9-bookworm
 
-WORKDIR /app
+WORKDIR /Backend
 
 COPY requirements.txt requirements.txt
 RUN apt update
 RUN apt install libpq-dev python3-dev gcc -y
 RUN pip install -r requirements.txt
+RUN pip install flask-login
 
 COPY . .
 
-CMD ["waitress-serve", "--call", "app:create_app"]
+CMD ["flask", "db", "migrate"]

@@ -10,7 +10,7 @@ def test_base_model(session):
     THEN check the serialize() and remove_session() methods
     """
 
-    from app.model.models import Model
+    from app.model import Model
     model = Model()
     assert model.serialize() == {}   
     with pytest.raises(NoInspectionAvailable):

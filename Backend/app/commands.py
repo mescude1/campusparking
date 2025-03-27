@@ -36,8 +36,8 @@ def add_user(username: str, password: str) -> None:
         password (str): The password of the user.
     """
 
-    from __init__.model import User
-    from __init__.model import UserRepository
+    from __init__.model.user import User
+    from __init__.model.repository.user_repository import UserRepository
 
     user_repository = UserRepository()
     user = User(username=username, password=password)
