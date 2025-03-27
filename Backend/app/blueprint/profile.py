@@ -79,7 +79,7 @@ def get_profile():
 @bp_profile.route('/edit-profile', methods=['POST'])
 @jwt_required()
 def edit_profile():
-    """Actualizar datos del perfil del usuario autenticado."""
+    """Actualizar todos los datos del perfil del usuario autenticado."""
     user_id = get_jwt_identity()
     user = User.query.get(user_id)
 
@@ -87,12 +87,25 @@ def edit_profile():
         return jsonify({'status': 'error', 'message': 'User not found'}), 404
 
     data = request.json
+    if not data:
+        return jsonify({'status': 'error', 'message': 'No data provided'}), 400
+
+    # Lista de campos editables (excluyendo ID y datos internos)
+    editable_fields = [
+        "username", "name", "last_name", "email", "cellphone",
+        "type", "profile_img", "id_img", "driver_license_img",
+        "contract", "vehicle_type"
+    ]
+
     for key, value in data.items():
-        if hasattr(user, key):
+        if key == "password":  
+            # Hashear la nueva contraseña antes de guardarla
+            user._password_hash = generate_password_hash(value)
+        elif key in editable_fields:
             setattr(user, key, value)
 
     db.session.commit()
-    return jsonify({'status': 'success', 'message': 'Profile updated'}), 200
+    return jsonify({'status': 'success', 'message': 'Profile updated successfully'}), 200
 
 @bp_profile.route('/generate-enrollment-contracts', methods=['POST'])
 @jwt_required()
