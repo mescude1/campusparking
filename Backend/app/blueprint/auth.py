@@ -17,41 +17,6 @@ from app.model import UserRepository, TokenRepository
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 
-@bp.route('/register', methods=('POST',))
-def register() -> Response:
-    """Register a new user.
-
-    Returns:
-        response: flask.Response object with the application/json mimetype.
-    """
-
-    if not request.is_json:
-        abort(400)
-
-    user_repository = UserRepository()
-
-    # creating a User object
-    user = User()
-    user.username = request.json.get('username')
-    user.password = request.json.get('password')
-
-    # validating the user
-    is_invalid = user_repository.is_invalid(user)
-    if not is_invalid:
-        user_repository.save(user)
-        return make_response(jsonify({
-            'status': 'success',
-            'data': user.serialize()
-        }), 200)
-    else:
-        response = make_response(jsonify({
-            'status': 'fail',
-            'data': is_invalid
-        }), 400)
-
-    return response
-
-
 @bp.route('/login', methods=('POST',))
 def login() -> Response:
     """Login of the user by creating a valid token.
