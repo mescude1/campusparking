@@ -5,7 +5,7 @@ import {Block, Button, Image, Input, Product, Text} from '../components/';
 
 import PaginatedTrips from '../components/PaginatedTrips'
 import { View } from 'react-native';
-const Home = () => {
+const PastServicesList = () => {
   const {t} = useTranslation();
   const [tab, setTab] = useState<number>(0);
   const {valet_user, valet_driver} = useData();
@@ -24,4 +24,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default PastServicesList;

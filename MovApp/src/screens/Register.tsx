@@ -48,7 +48,7 @@ const Register = () => {
 
   const handleSignUp = useCallback(() => {
     if (!Object.values(isValid).includes(false)) {
-      /** send/save registratin data */
+      /** send/save registration data */
       console.log('handleSignUp', registration);
     }
   }, [isValid, registration]);

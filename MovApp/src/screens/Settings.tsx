@@ -8,7 +8,7 @@ import {useData, useTheme, useTranslation} from '../hooks/';
 
 const isAndroid = Platform.OS === 'android';
 
-const Profile = () => {
+const Settings = () => {
   const {user} = useData();
   const {t} = useTranslation();
   const navigation = useNavigation();
@@ -222,4 +222,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Settings;

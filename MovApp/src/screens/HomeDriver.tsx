@@ -5,7 +5,8 @@ import {Block, Button, Image, Input, Product, Text} from '../components/';
 import GreetUser from '../components/GreetUser'
 import CenteredContainer from '../components/CenteredContainer'
 import { View } from 'react-native';
-const Home = () => {
+
+const HomeDriver = () => {
   const {t} = useTranslation();
   const [tab, setTab] = useState<number>(0);
   const {valet_user, valet_driver} = useData();
@@ -24,4 +25,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomeDriver;
