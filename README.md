@@ -1,2 +1,2 @@
 # campusparking
-App for controlling parking on campus and beyond
+App for valet parking on campus and beyond
