@@ -49,10 +49,10 @@
     }
   },
   "app": {
-    "name": "Soft UI",
-    "fullname": "Soft UI Kit",
+    "name": "Campus Parking",
+    "fullname": "Campus Parking",
     "native": "React Native",
-    "link": "creative-tim.com"
+    "link": "campusparking.co"
   },
   "darkMode": "Dark Mode",
   "screens": {
@@ -63,10 +63,11 @@
     "profile": "Profile",
     "settings": "Settings",
     "register": "Create account",
-    "extra": "Extra - Automotive"
+    "extra": "Extra - Automotive",
+    "history": "History"
   },
   "navigation": {
-    "home": "Soft UI",
+    "home": "Campus Parking",
     "components": "Components",
     "articles": "Soft UI",
     "rentals": "Soft UI",
@@ -82,16 +83,20 @@
     "register": "Register",
     "login": "Login",
     "extra": "Automotive",
-    "shopping": "Shopping Cart"
+    "shopping": "Shopping Cart",
+    "history": "History",
+    "past_services_list": "Past Services"
   },
   "menu": {
     "started": "Getting Started",
     "documentation": "Documentation"
   },
   "home": {
-    "title": "Soft UI",
+    "title": "Campus Parking",
     "following": "Following",
-    "trending": "Trending"
+    "trending": "Trending",
+    "valet_driver": "Driver",
+    "valet_user": "User"
   },
   "register": {
     "title": "Welcome",

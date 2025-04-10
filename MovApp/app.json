@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "rn-soft-ui-kit-free",
-    "slug": "rn-soft-ui-kit-free",
-    "description": "React Native - Soft UI Kit - Free",
+    "name": "campus-parking",
+    "slug": "campus-parking",
+    "description": "Campus Parking - Tu Espacio Tu Parqueo",
     "primaryColor": "#223577",
     "version": "1.0.0",
     "orientation": "portrait",
