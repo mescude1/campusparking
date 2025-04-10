@@ -14,7 +14,7 @@ export const COLORS: ThemeColors = {
 
   // base colors
   /** UI color for #primary */
-  primary: '#CB0C9F',
+  primary: '#000066',
   /** UI color for #secondary */
   secondary: '#627594', // '#8392AB',
   /** UI color for #tertiary */
@@ -39,7 +39,7 @@ export const COLORS: ThemeColors = {
   /** UI color for #success */
   success: '#82D616',
   /** UI color for #info */
-  info: '#17C1E8',
+  info: '#04c1e0',
 
   /** UI colors for navigation & card */
   card: '#FFFFFF',
@@ -50,7 +50,7 @@ export const COLORS: ThemeColors = {
   overlay: 'rgba(0,0,0,0.3)',
 
   /** UI color for input borderColor on focus */
-  focus: '#E293D3',
+  focus: '#04c1e0',
   input: '#252F40',
 
   /** UI color for switch checked/active color */
@@ -64,7 +64,7 @@ export const COLORS: ThemeColors = {
   /** social colors */
   facebook: '#3B5998',
   twitter: '#55ACEE',
-  dribbble: '#EA4C89',
+  dribbble: '#155fe7',
 
   /** icon tint color */
   icon: '#8392AB',
@@ -73,11 +73,11 @@ export const COLORS: ThemeColors = {
   blurTint: 'light',
 
   /** product link color */
-  link: '#CB0C9F',
+  link: '#000066',
 };
 
 export const GRADIENTS: ThemeGradients = {
-  primary: ['#FF0080', '#7928CA'],
+  primary: ['#000066', '#155fe7'],
   secondary: ['#A8B8D8', '#627594'],
   info: ['#21D4FD', '#2152FF'],
   success: ['#98EC2D', '#17AD37'],

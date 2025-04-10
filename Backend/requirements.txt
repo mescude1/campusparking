@@ -8,3 +8,4 @@ Flask-SQLAlchemy
 Flask-Migrate
 flask-login
 flask-wtf
+geopy

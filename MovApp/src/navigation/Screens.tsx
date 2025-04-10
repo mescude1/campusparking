@@ -25,9 +25,9 @@ export default () => {
       />
 
       <Stack.Screen
-        name="Articles"
+        name="Ultimos Servicios"
         component={Articles}
-        options={{title: t('navigation.articles')}}
+        options={{title: t('navigation.past_services_list')}}
       />
 
       <Stack.Screen name="Pro" component={Pro} options={screenOptions.pro} />
