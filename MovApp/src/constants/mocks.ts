@@ -81,8 +81,8 @@ export const USERS: IUser[] = [
   },
 ];
 
-// following cards
-export const FOLLOWING: IProduct[] = [
+// user cards
+export const VALET_USER: IProduct[] = [
   {
     id: 1,
     type: 'vertical',
@@ -127,8 +127,8 @@ export const FOLLOWING: IProduct[] = [
   },
 ];
 
-// trending cards
-export const TRENDING: IProduct[] = [
+// driver cards
+export const VALET_DRIVER: IProduct[] = [
   {
     id: 1,
     type: 'horizontal',
@@ -703,8 +703,8 @@ export const NOTIFICATIONS: INotification[] = [
 
 export default {
   USERS,
-  FOLLOWING,
-  TRENDING,
+  VALET_USER,
+  VALET_DRIVER,
   CATEGORIES,
   ARTICLES,
   RECOMMENDATIONS,

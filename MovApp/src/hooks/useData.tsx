@@ -12,8 +12,8 @@ import {
 
 import {
   USERS,
-  FOLLOWING,
-  TRENDING,
+  VALET_USER,
+  VALET_DRIVER,
   CATEGORIES,
   ARTICLES,
 } from '../constants/mocks';
@@ -26,8 +26,8 @@ export const DataProvider = ({children}: {children: React.ReactNode}) => {
   const [theme, setTheme] = useState<ITheme>(light);
   const [user, setUser] = useState<IUser>(USERS[0]);
   const [users, setUsers] = useState<IUser[]>(USERS);
-  const [following, setFollowing] = useState<IProduct[]>(FOLLOWING);
-  const [trending, setTrending] = useState<IProduct[]>(TRENDING);
+  const [valet_user, setValetUser] = useState<IProduct[]>(VALET_USER);
+  const [valet_driver, setValetDriver] = useState<IProduct[]>(VALET_DRIVER);
   const [categories, setCategories] = useState<ICategory[]>(CATEGORIES);
   const [articles, setArticles] = useState<IArticle[]>(ARTICLES);
   const [article, setArticle] = useState<IArticle>({});
@@ -106,10 +106,10 @@ export const DataProvider = ({children}: {children: React.ReactNode}) => {
     users,
     handleUsers,
     handleUser,
-    following,
-    setFollowing,
-    trending,
-    setTrending,
+    valet_user,
+    setValetUser,
+    valet_driver,
+    setValetDriver,
     categories,
     setCategories,
     articles,
