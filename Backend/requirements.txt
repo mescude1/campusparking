@@ -1,0 +1,11 @@
+Flask
+Flask-JWT-Extended
+python-dotenv
+flask-migrate
+sqlalchemy
+psycopg2
+Flask-SQLAlchemy
+Flask-Migrate
+flask-login
+flask-wtf
+geopy
