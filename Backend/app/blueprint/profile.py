@@ -1,6 +1,6 @@
 from flask import Blueprint, Response, request, jsonify, abort, make_response, session
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from app import db
+from Backend.app import db
 from Backend.app.model import User
 
 

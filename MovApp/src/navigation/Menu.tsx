@@ -67,20 +67,19 @@ const DrawerContent = (
 ) => {
   const {navigation} = props;
   const {t} = useTranslation();
-  const {isDark, handleIsDark} = useData();
   const [active, setActive] = useState('Home');
   const {assets, colors, gradients, sizes} = useTheme();
   const labelColor = colors.text;
 
   const handleNavigation = useCallback(
-    (to) => {
+    (to:any) => {
       setActive(to);
       navigation.navigate(to);
     },
     [navigation, setActive],
   );
 
-  const handleWebLink = useCallback((url) => Linking.openURL(url), []);
+  const handleWebLink = useCallback((url:any) => Linking.openURL(url), []);
 
   // screen list for Drawer menu
   const screens = [
@@ -88,7 +87,9 @@ const DrawerContent = (
     {name: t('screens.components'), to: 'Components', icon: assets.components},
     {name: t('screens.history'), to: 'History', icon: assets.calendar},
     {name: t('screens.profile'), to: 'Profile', icon: assets.profile},
-    {name: t('screens.settings'), to: 'Settings', icon: assets.settings}
+    {name: t('screens.settings'), to: 'Settings', icon: assets.settings},
+    {name: t('screens.login'), to: 'Login', icon: assets.settings},
+    {name: t('screens.register'), to: 'Register', icon: assets.settings}
   ];
 
   return (

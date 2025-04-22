@@ -17,31 +17,25 @@ export default () => {
         component={Home}
         options={{title: t('navigation.home')}}
       />
-
-      <Stack.Screen
-        name="Components"
-        component={Components}
-        options={screenOptions.components}
-      />
-
       <Stack.Screen
         name="Ultimos Servicios"
         component={Articles}
         options={{title: t('navigation.past_services_list')}}
       />
-
-      <Stack.Screen name="Pro" component={Pro} options={screenOptions.pro} />
-
       <Stack.Screen
-        name="Profile"
+        name="Perfil"
         component={Profile}
-        options={{headerShown: false}}
+        options={{headerShown: false, title: t('navigation.profile')}}
       />
-
       <Stack.Screen
         name="Register"
         component={Register}
-        options={{headerShown: false}}
+        options={{headerShown: false, title: t('navigation.register')}}
+      />
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{headerShown: false, title: t('navigation.login')}}
       />
     </Stack.Navigator>
   );

@@ -64,7 +64,8 @@
     "settings": "Settings",
     "register": "Create account",
     "extra": "Extra - Automotive",
-    "history": "History"
+    "history": "History",
+    "login": "Login"
   },
   "navigation": {
     "home": "Campus Parking",
@@ -85,7 +86,7 @@
     "extra": "Automotive",
     "shopping": "Shopping Cart",
     "history": "History",
-    "past_services_list": "Past Services"
+    "past_services_list": "Past Services",
   },
   "menu": {
     "started": "Getting Started",

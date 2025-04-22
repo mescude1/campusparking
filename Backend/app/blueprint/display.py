@@ -6,7 +6,24 @@ bp_display = Blueprint('display', __name__, url_prefix='/display')
 @bp_display.route('/dashboard', methods=['GET'])
 @jwt_required()
 def dashboard():
-    return jsonify({'status': 'success', 'message': 'Dashboard data'}), 200
+    data = request.get_json()
+    token = data.get('token') if data else None
+
+    if not token:
+        return jsonify({"error": "Missing token"}), 400
+
+    user_data = get_user_data_from_token(token)
+    if not user_data:
+        return jsonify({"error": "Invalid token"}), 401
+
+    name = user_data['name']
+    services = user_data['services'][-3:][::-1]  # Last 3 services, most recent first
+
+
+    return jsonify({'status': 'success', 'message': {
+        "name": name,
+        "last_services": services
+    }}), 200
 
 @bp_display.route('/services', methods=['GET'])
 @jwt_required()

@@ -63,7 +63,8 @@
     "profile": "Perfil",
     "settings": "Configuración",
     "register": "Crear cuenta",
-    "extra": "Extra - Automotriz"
+    "extra": "Extra - Automotriz",
+    "login": "Iniciar sesión"
   },
   "navigation": {
     "home": "Campus Parking",

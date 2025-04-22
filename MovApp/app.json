@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "campus-parking",
-    "slug": "campus-parking",
+    "slug": "campusparking",
     "description": "Campus Parking - Tu Espacio Tu Parqueo",
     "primaryColor": "#223577",
     "version": "1.0.0",
@@ -29,6 +29,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "056b3869-1d03-4bb1-a4a5-9ebc1f031330"
+      }
+    },
+    "owner": "latincrow81"
   }
 }
