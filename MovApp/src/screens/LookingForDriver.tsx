@@ -4,8 +4,6 @@ import {useData, useTheme, useTranslation} from '../hooks/';
 import {Block, Button, Image, Input, Product, Text} from '../components/';
 import GreetUser from '../components/GreetUser'
 import CenteredContainer from '../components/CenteredContainer'
-import LatestTrips from '../components/LatestTrips'
-import ServiceRequest from '../components/ServiceRequest'
 import { View } from 'react-native';
 const LookingForDriver = () => {
   const {t} = useTranslation();

@@ -1,6 +1,7 @@
-from flask import Blueprint, Response, request, jsonify, abort, make_response, session
-from flask_jwt_extended import jwt_required, get_jwt_identity
-from Backend.app import db
+from flask import Blueprint, request, jsonify, abort
+from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
+from werkzeug.security import generate_password_hash
+from Backend.app.database import db
 from Backend.app.model import User
 
 
@@ -19,6 +20,15 @@ def register() -> Response:
 
     data = request.get_json()
 
+    # Verificar que los datos requeridos están presentes
+    required_fields = ["username", "password", "name", "last_name", "email",
+                       "cellphone", "type", "profile_img", "id_img",
+                       "driver_license_img", "contract", "vehicle_type"]
+
+    for field in required_fields:
+        if field not in data:
+            return jsonify({'status': 'error', 'message': f'Missing field: {field}'}), 400
+
     username = data.get('username')
     password = data.get('password')
 
@@ -27,34 +37,82 @@ def register() -> Response:
         new_user.username = username
         new_user.password_hash = password
 
-        db.session.add(new_user)
-        db.session.commit()
+        new_user.name = data.get("name")
+        new_user.last_name = data.get("last_name")
+        new_user.email = data.get("email")
+        new_user.cellphone = data.get("cellphone")
+        new_user.type = data.get("type")
+        new_user.profile_img = data.get("profile_img")
+        new_user.id_img = data.get("id_img")
+        new_user.driver_license_img = data.get("driver_license_img")
+        new_user.contract = data.get("contract")
+        new_user.vehicle_type = data.get("vehicle_type")
+        new_user.is_deleted = False  # Default to False
 
-        session['user_id'] = new_user.id
+    # Guardar en la base de datos
+    db.session.add(new_user)
+    db.session.commit()
 
-    response = make_response(jsonify({
-        'status': 'success',
-        'data': {
-            'message': "Registration successful! Please log in."
-        }
-    }), 200)
+    # Crear un token JWT para el usuario registrado
+    access_token = create_access_token(identity=new_user.id)
 
-    return response
+    return jsonify({'status': 'success', 'message': 'User registered', 'access_token': access_token}), 201
 
 @bp_profile.route('/profile', methods=['GET'])
 @jwt_required()
 def get_profile():
-    user = get_jwt_identity()
-    return jsonify({'status': 'success', 'message': 'Profile data', 'user': user}), 200
+    """Obtener datos del perfil del usuario autenticado."""
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+
+    if not user:
+        return jsonify({'status': 'error', 'message': 'User not found'}), 404
+
+    return jsonify({'status': 'success', 'message': 'Profile data', 'user': user.to_dict}), 200
 
 @bp_profile.route('/edit-profile', methods=['POST'])
 @jwt_required()
 def edit_profile():
+    """Actualizar todos los datos del perfil del usuario autenticado."""
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+
+    if not user:
+        return jsonify({'status': 'error', 'message': 'User not found'}), 404
+
     data = request.json
-    return jsonify({'status': 'success', 'message': 'Profile updated', 'details': data}), 200
+    if not data:
+        return jsonify({'status': 'error', 'message': 'No data provided'}), 400
+
+    # Lista de campos editables (excluyendo ID y datos internos)
+    editable_fields = [
+        "username", "name", "last_name", "email", "cellphone",
+        "type", "profile_img", "id_img", "driver_license_img",
+        "contract", "vehicle_type"
+    ]
+
+    for key, value in data.items():
+        if key == "password":
+            # Hashear la nueva contraseña antes de guardarla
+            user._password_hash = generate_password_hash(value)
+        elif key in editable_fields:
+            setattr(user, key, value)
+
+    db.session.commit()
+    return jsonify({'status': 'success', 'message': 'Profile updated successfully'}), 200
 
 @bp_profile.route('/generate-enrollment-contracts', methods=['POST'])
 @jwt_required()
 def generate_enrollment_contracts():
+    """Generar contratos de inscripción para el usuario autenticado."""
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+
+    if not user:
+        return jsonify({'status': 'error', 'message': 'User not found'}), 404
+
     data = request.json
-    return jsonify({'status': 'success', 'message': 'Enrollment contracts generated', 'details': data}), 200
+    user.contract = data.get("contract", user.contract)
+
+    db.session.commit()
+    return jsonify({'status': 'success', 'message': 'Enrollment contracts generated'}), 200

@@ -8,30 +8,30 @@ import {Block, Button, Input, Image, Text, Checkbox} from '../components/';
 
 const isAndroid = Platform.OS === 'android';
 
-interface IRegistration {
+interface ILogin {
   name: string;
   email: string;
   password: string;
   agreed: boolean;
 }
-interface IRegistrationValidation {
+interface ILoginValidation {
   name: boolean;
   email: boolean;
   password: boolean;
   agreed: boolean;
 }
 
-const Register = () => {
+const Login = () => {
   const {isDark} = useData();
   const {t} = useTranslation();
   const navigation = useNavigation();
-  const [isValid, setIsValid] = useState<IRegistrationValidation>({
+  const [isValid, setIsValid] = useState<ILoginValidation>({
     name: false,
     email: false,
     password: false,
     agreed: false,
   });
-  const [registration, setRegistration] = useState<IRegistration>({
+  const [login, setLogin] = useState<ILogin>({
     name: '',
     email: '',
     password: '',
@@ -41,27 +41,27 @@ const Register = () => {
 
   const handleChange = useCallback(
     (value) => {
-      setRegistration((state) => ({...state, ...value}));
+      setLogin((state) => ({...state, ...value}));
     },
-    [setRegistration],
+    [setLogin],
   );
 
   const handleSignUp = useCallback(() => {
     if (!Object.values(isValid).includes(false)) {
-      /** send/save registratin data */
-      console.log('handleSignUp', registration);
+      /** send/save registering data */
+      console.log('handleSignUp', login);
     }
-  }, [isValid, registration]);
+  }, [isValid, login]);
 
   useEffect(() => {
     setIsValid((state) => ({
       ...state,
-      name: regex.name.test(registration.name),
-      email: regex.email.test(registration.email),
-      password: regex.password.test(registration.password),
-      agreed: registration.agreed,
+      name: regex.name.test(login.name),
+      email: regex.email.test(login.email),
+      password: regex.password.test(login.password),
+      agreed: login.agreed,
     }));
-  }, [registration, setIsValid]);
+  }, [login, setIsValid]);
 
   return (
     <Block safe marginTop={sizes.md}>
@@ -181,8 +181,8 @@ const Register = () => {
                   marginBottom={sizes.m}
                   label={t('common.name')}
                   placeholder={t('common.namePlaceholder')}
-                  success={Boolean(registration.name && isValid.name)}
-                  danger={Boolean(registration.name && !isValid.name)}
+                  success={Boolean(login.name && isValid.name)}
+                  danger={Boolean(login.name && !isValid.name)}
                   onChangeText={(value) => handleChange({name: value})}
                 />
                 <Input
@@ -191,8 +191,8 @@ const Register = () => {
                   label={t('common.email')}
                   keyboardType="email-address"
                   placeholder={t('common.emailPlaceholder')}
-                  success={Boolean(registration.email && isValid.email)}
-                  danger={Boolean(registration.email && !isValid.email)}
+                  success={Boolean(login.email && isValid.email)}
+                  danger={Boolean(login.email && !isValid.email)}
                   onChangeText={(value) => handleChange({email: value})}
                 />
                 <Input
@@ -202,15 +202,15 @@ const Register = () => {
                   label={t('common.password')}
                   placeholder={t('common.passwordPlaceholder')}
                   onChangeText={(value) => handleChange({password: value})}
-                  success={Boolean(registration.password && isValid.password)}
-                  danger={Boolean(registration.password && !isValid.password)}
+                  success={Boolean(login.password && isValid.password)}
+                  danger={Boolean(login.password && !isValid.password)}
                 />
               </Block>
               {/* checkbox terms */}
               <Block row flex={0} align="center" paddingHorizontal={sizes.sm}>
                 <Checkbox
                   marginRight={sizes.sm}
-                  checked={registration?.agreed}
+                  checked={login?.agreed}
                   onPress={(value) => handleChange({agreed: value})}
                 />
                 <Text paddingRight={sizes.s}>
@@ -253,4 +253,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;

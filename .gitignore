@@ -1,5 +1,6 @@
 MovApp/node_modules
 MovApp/.expo/
 cpenv/
+venv/
 instance/
 MovApp/.idea
