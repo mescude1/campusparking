@@ -1,5 +1,7 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_jwt_extended import jwt_required
+
+from app.model.repository.user_repository import UserRepository
 
 bp_display = Blueprint('display', __name__, url_prefix='/display')
 
@@ -12,7 +14,7 @@ def dashboard():
     if not token:
         return jsonify({"error": "Missing token"}), 400
 
-    user_data = get_user_data_from_token(token)
+    user_data = UserRepository.get_user_from_token(token)
     if not user_data:
         return jsonify({"error": "Invalid token"}), 401
 

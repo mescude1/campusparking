@@ -2,10 +2,10 @@ from datetime import datetime
 
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from Backend.app.model.user import User
-from Backend.app.model.service import Service
+from app.model.user import User
+from app.model.service import Service
 from geopy.distance import geodesic, distance
-from Backend.app.database import db
+from app.database import db
 
 bp_valet = Blueprint('valet', __name__, url_prefix='/valet')
 

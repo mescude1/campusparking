@@ -1,6 +1,4 @@
-from traceback import format_exc
-
-from Backend.app.database import db
+from app.database import db
 
 
 class Service(db.Model):

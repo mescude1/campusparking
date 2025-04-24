@@ -4,8 +4,8 @@ from abc import ABC, abstractmethod
 
 from sqlalchemy import desc
 
-from Backend.app.database import db_session
-from Backend.app.model import Model
+from app.database import db_session
+from app.model import Model
 
 class Repository(ABC):
     """This class implements the common methods used

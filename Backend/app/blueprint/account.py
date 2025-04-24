@@ -8,8 +8,8 @@ from flask import (
 from flask_jwt_extended import (
     jwt_required, get_jwt_identity
 )
-from Backend.app.model import UserRepository
 
+from app.model.repository.user_repository import UserRepository
 
 bp = Blueprint('account', __name__, url_prefix='/account')
 
