@@ -98,3 +98,7 @@ class UserRepository(Repository):
             user.remove_session()
 
         return invalid
+
+    @classmethod
+    def get_user_from_token(cls, token):
+        pass

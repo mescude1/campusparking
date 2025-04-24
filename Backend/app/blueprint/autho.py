@@ -3,12 +3,11 @@ to the '/auth' endpoint of HTTP REST API.
 """
 
 from flask import (
-    abort, Blueprint, request, Response, make_response, jsonify, session
+    Blueprint, request, Response, make_response, jsonify, session
 )
-from Backend.app.model import User
-from Backend.app.database import db
+from app.model import User
 from flask_jwt_extended import create_access_token, get_jwt
-from Backend.app import blacklisted_tokens
+from app import blacklisted_tokens
 
 
 bp = Blueprint('autho', __name__, url_prefix='/autho')

@@ -1,6 +1,6 @@
 import hashlib
 
-from Backend.app.database import db
+from app.database import db
 from flask_login import UserMixin
 from sqlalchemy.ext.hybrid import hybrid_property
 

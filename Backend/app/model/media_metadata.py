@@ -1,4 +1,4 @@
-from Backend.app.database import db
+from app.database import db
 
 
 class MediaMetadata(db.Model):

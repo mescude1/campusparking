@@ -1,8 +1,8 @@
-from flask import Blueprint, request, jsonify, abort
+from flask import Blueprint, request, jsonify, abort, Response, make_response
 from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
 from werkzeug.security import generate_password_hash
-from Backend.app.database import db
-from Backend.app.model import User
+from app.database import db
+from app.model import User
 
 
 bp_profile = Blueprint('profile', __name__, url_prefix='/profile')
@@ -56,11 +56,11 @@ def register() -> Response:
     # Crear un token JWT para el usuario registrado
     access_token = create_access_token(identity=new_user.id)
 
-    return jsonify({'status': 'success', 'message': 'User registered', 'access_token': access_token}), 201
+    return make_response(jsonify({'status': 'success', 'message': 'User registered', 'access_token': access_token}), 201)
 
 @bp_profile.route('/profile', methods=['GET'])
 @jwt_required()
-def get_profile():
+def get_profile() -> Response:
     """Obtener datos del perfil del usuario autenticado."""
     user_id = get_jwt_identity()
     user = User.query.get(user_id)
@@ -68,21 +68,21 @@ def get_profile():
     if not user:
         return jsonify({'status': 'error', 'message': 'User not found'}), 404
 
-    return jsonify({'status': 'success', 'message': 'Profile data', 'user': user.to_dict}), 200
+    return make_response(jsonify({'status': 'success', 'message': 'Profile data', 'user': user.to_dict}), 200)
 
 @bp_profile.route('/edit-profile', methods=['POST'])
 @jwt_required()
-def edit_profile():
+def edit_profile() -> Response:
     """Actualizar todos los datos del perfil del usuario autenticado."""
     user_id = get_jwt_identity()
     user = User.query.get(user_id)
 
     if not user:
-        return jsonify({'status': 'error', 'message': 'User not found'}), 404
+        return make_response(jsonify({'status': 'error', 'message': 'User not found'}), 404)
 
     data = request.json
     if not data:
-        return jsonify({'status': 'error', 'message': 'No data provided'}), 400
+        return make_response(jsonify({'status': 'error', 'message': 'No data provided'}), 400)
 
     # Lista de campos editables (excluyendo ID y datos internos)
     editable_fields = [
@@ -99,7 +99,7 @@ def edit_profile():
             setattr(user, key, value)
 
     db.session.commit()
-    return jsonify({'status': 'success', 'message': 'Profile updated successfully'}), 200
+    return make_response(jsonify({'status': 'success', 'message': 'Profile updated successfully'}), 200)
 
 @bp_profile.route('/generate-enrollment-contracts', methods=['POST'])
 @jwt_required()
@@ -109,10 +109,10 @@ def generate_enrollment_contracts():
     user = User.query.get(user_id)
 
     if not user:
-        return jsonify({'status': 'error', 'message': 'User not found'}), 404
+        return make_response(jsonify({'status': 'error', 'message': 'User not found'}), 404)
 
     data = request.json
     user.contract = data.get("contract", user.contract)
 
     db.session.commit()
-    return jsonify({'status': 'success', 'message': 'Enrollment contracts generated'}), 200
+    return make_response(jsonify({'status': 'success', 'message': 'Enrollment contracts generated'}), 200)

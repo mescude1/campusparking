@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify, abort
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from Backend.app.database import db
-from Backend.app.model import Vehicle
+from app.database import db
+from app.model import Vehicle
 
 # Crear un Blueprint para manejar las rutas relacionadas con vehículos
 bp_vehicles = Blueprint('vehicles', __name__, url_prefix='/vehicles')
