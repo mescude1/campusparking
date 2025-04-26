@@ -1,3 +1,5 @@
+from sqlalchemy import ForeignKey
+
 from app.database import db
 
 
@@ -28,13 +30,13 @@ class Service(db.Model):
     __tablename__ = 'services'
 
     id = db.Column(db.Integer, primary_key=True)
-    driver_id = db.Column(db.Integer, nullable=False, foreing_key='users.id')
-    user_id = db.Column(db.Integer, nullable=False, foreing_key='users.id')
-    vehicle_id = db.Column(db.Integer, nullable=False, foreing_key='vehicles.id')
-    contract_id = db.Column(db.Integer, nullable=False, foreing_key='contracts.id')
-    parking_location = db.Column(db.Integer, nullable=False, foreign_key='user_locations.id')
-    pickup_location = db.Column(db.Integer, nullable=False, foreign_key='user_locations.id')
-    keys_location = db.Column(db.Integer, nullable=False, foreign_key='user_locations.id')
+    driver_id = db.Column(db.Integer, ForeignKey('users.id'), nullable=True)
+    user_id = db.Column(db.Integer, ForeignKey('users.id'), nullable=True)
+    vehicle_id = db.Column(db.Integer, ForeignKey('vehicles.id'), nullable=True)
+    contract_id = db.Column(db.Integer, ForeignKey('contracts.id'), nullable=True)
+    parking_location = db.Column(db.Integer, ForeignKey('user_locations.id'), nullable=False)
+    pickup_location = db.Column(db.Integer, ForeignKey('user_locations.id'), nullable=False)
+    keys_location = db.Column(db.Integer, ForeignKey('user_locations.id'), nullable=False,)
     is_finished = db.Column(db.Boolean, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
     is_deleted = db.Column(db.Boolean, nullable=False)

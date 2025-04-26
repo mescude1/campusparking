@@ -1,3 +1,5 @@
+from sqlalchemy import ForeignKey
+
 from app.database import db
 
 
@@ -28,9 +30,9 @@ class ContractMetadata(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     contract_url = db.Column(db.String, nullable=False)
-    user_id = db.Column(db.Integer, nullable=False, foreign_key='users.id')
+    user_id = db.Column(db.Integer, ForeignKey('users.id'), nullable=False)
     signed_at = db.Column(db.DateTime, nullable=False)
-    service_id = db.Column(db.Integer, nullable=True, foreign_key='services.id')
+    service_id = db.Column(db.Integer, ForeignKey('services.id', nullable=True))
     type = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
     is_deleted = db.Column(db.Boolean, nullable=False)

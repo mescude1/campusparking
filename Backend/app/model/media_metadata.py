@@ -1,3 +1,5 @@
+from sqlalchemy import ForeignKey
+
 from app.database import db
 
 
@@ -26,7 +28,7 @@ class MediaMetadata(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     url = db.Column(db.String, nullable=False)
     image_name = db.Column(db.String, nullable=False)
-    owner = db.Column(db.Integer, nullable=False, foreign_key='users.id')
+    owner = db.Column(db.Integer, ForeignKey('users.id'), nullable=False)
     type = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
     is_deleted = db.Column(db.Boolean, nullable=False)
