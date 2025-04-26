@@ -1,3 +1,5 @@
+from sqlalchemy import ForeignKey
+
 from app.database import db
 
 class UserLocation(db.Model):
@@ -27,7 +29,7 @@ class UserLocation(db.Model):
     __tablename__ = 'user_locations'
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, nullable=False, foreign_key='users.id')
+    user_id = db.Column(db.Integer, ForeignKey('users.id'), nullable=False)
     latitude = db.Column(db.Float, nullable=False)
     longitude = db.Column(db.Float, nullable=False)
     timestamp = db.Column(db.DateTime, nullable=False)
