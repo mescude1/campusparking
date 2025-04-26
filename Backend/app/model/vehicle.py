@@ -1,3 +1,4 @@
+from sqlalchemy import ForeignKey
 
 from app.database import db
 
@@ -34,7 +35,7 @@ class Vehicle(db.Model):
     vehicle_img = db.Column(db.String, nullable=False)
     proof_insurance_img = db.Column(db.String, nullable=False)
     property_card = db.Column(db.String, nullable=False)
-    owner = db.Column(db.Integer, nullable=False, foreign_key='users.id')
+    owner = db.Column(db.Integer, ForeignKey('users.id'), nullable=False)
     type = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
     is_deleted = db.Column(db.Boolean, nullable=False)
