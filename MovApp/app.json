@@ -29,12 +29,6 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "056b3869-1d03-4bb1-a4a5-9ebc1f031330"
-      }
-    },
-    "owner": "latincrow81"
+    }
   }
 }

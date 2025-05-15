@@ -5,6 +5,7 @@ import {Block, Button, Image, Input, Product, Text} from '../components/';
 
 import PaginatedTrips from '../components/PaginatedTrips'
 import { View } from 'react-native';
+
 const PastServicesList = () => {
   const {t} = useTranslation();
   const [tab, setTab] = useState<number>(0);
