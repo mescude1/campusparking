@@ -21,7 +21,7 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.campusparking.campus-parking",
+      "package": "com.campusparking.campusparking",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#223577"
