@@ -1,9 +1,14 @@
-import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
-import Svg, { Circle, Image } from 'react-native-svg';
-import Animated, { useSharedValue, useAnimatedProps, withRepeat, withTiming } from 'react-native-reanimated';
+import React, { useEffect } from "react";
+import { View, Text, StyleSheet, Dimensions } from "react-native";
+import Svg, { Circle, Image } from "react-native-svg";
+import Animated, {
+  useSharedValue,
+  useAnimatedProps,
+  withRepeat,
+  withTiming,
+} from "react-native-reanimated";
 
-const { width, height } = Dimensions.get('window');
+const { width, height } = Dimensions.get("window");
 const circleRadius = 60; // Circle path radius
 
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
@@ -35,7 +40,7 @@ const SearchingDrivers = () => {
           fill="transparent"
         />
         <Image
-          href={require('..assets/image/car.png')} // Use a small car image in your assets
+          href={require("..assets/image/car.png")} // Use a small car image in your assets
           x={width / 2 - 15}
           y={height / 3 - 15}
           width="30"
@@ -49,13 +54,13 @@ const SearchingDrivers = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#fff",
   },
   text: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 20,
   },
 });

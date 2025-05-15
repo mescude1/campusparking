@@ -1,18 +1,18 @@
-import React, {useCallback} from 'react';
-import {Platform, Linking} from 'react-native';
-import {Ionicons} from '@expo/vector-icons';
-import {useNavigation} from '@react-navigation/core';
+import React, { useCallback } from "react";
+import { Platform, Linking } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/core";
 
-import {Block, Button, Image, Text} from '../components/';
-import {useData, useTheme, useTranslation} from '../hooks/';
+import { Block, Button, Image, Text } from "../components/";
+import { useData, useTheme, useTranslation } from "../hooks/";
 
-const isAndroid = Platform.OS === 'android';
+const isAndroid = Platform.OS === "android";
 
 const Settings = () => {
-  const {user} = useData();
-  const {t} = useTranslation();
+  const { user } = useData();
+  const { t } = useTranslation();
   const navigation = useNavigation();
-  const {assets, colors, sizes} = useTheme();
+  const { assets, colors, sizes } = useTheme();
 
   const IMAGE_SIZE = (sizes.width - (sizes.padding + sizes.sm) * 2) / 3;
   const IMAGE_VERTICAL_SIZE =
@@ -22,9 +22,9 @@ const Settings = () => {
     (sizes.width - (IMAGE_VERTICAL_SIZE + sizes.sm) * 2) / 2;
 
   const handleSocialLink = useCallback(
-    (type: 'twitter' | 'dribbble') => {
+    (type: "twitter" | "dribbble") => {
       const url =
-        type === 'twitter'
+        type === "twitter"
           ? `https://twitter.com/${user?.social?.twitter}`
           : `https://dribbble.com/${user?.social?.dribbble}`;
 
@@ -34,7 +34,7 @@ const Settings = () => {
         alert(`Cannot open URL: ${url}`);
       }
     },
-    [user],
+    [user]
   );
 
   return (
@@ -43,7 +43,8 @@ const Settings = () => {
         scroll
         paddingHorizontal={sizes.s}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{paddingBottom: sizes.padding}}>
+        contentContainerStyle={{ paddingBottom: sizes.padding }}
+      >
         <Block flex={0}>
           <Image
             background
@@ -51,22 +52,24 @@ const Settings = () => {
             padding={sizes.sm}
             paddingBottom={sizes.l}
             radius={sizes.cardRadius}
-            source={assets.background}>
+            source={assets.background}
+          >
             <Button
               row
               flex={0}
               justify="flex-start"
-              onPress={() => navigation.goBack()}>
+              onPress={() => navigation.goBack()}
+            >
               <Image
                 radius={0}
                 width={10}
                 height={18}
                 color={colors.white}
                 source={assets.arrow}
-                transform={[{rotate: '180deg'}]}
+                transform={[{ rotate: "180deg" }]}
               />
               <Text p white marginLeft={sizes.s}>
-                {t('profile.title')}
+                {t("profile.title")}
               </Text>
             </Button>
             <Block flex={0} align="center">
@@ -74,7 +77,7 @@ const Settings = () => {
                 width={64}
                 height={64}
                 marginBottom={sizes.sm}
-                source={{uri: user?.avatar}}
+                source={{ uri: user?.avatar }}
               />
               <Text h5 center white>
                 {user?.name}
@@ -90,14 +93,16 @@ const Settings = () => {
                   radius={sizes.m}
                   onPress={() => {
                     alert(`Follow ${user?.name}`);
-                  }}>
+                  }}
+                >
                   <Block
                     justify="center"
                     radius={sizes.m}
                     paddingHorizontal={sizes.m}
-                    color="rgba(255,255,255,0.2)">
+                    color="rgba(255,255,255,0.2)"
+                  >
                     <Text white bold transform="uppercase">
-                      {t('common.follow')}
+                      {t("common.follow")}
                     </Text>
                   </Block>
                 </Button>
@@ -107,7 +112,8 @@ const Settings = () => {
                   marginHorizontal={sizes.sm}
                   color="rgba(255,255,255,0.2)"
                   outlined={String(colors.white)}
-                  onPress={() => handleSocialLink('twitter')}>
+                  onPress={() => handleSocialLink("twitter")}
+                >
                   <Ionicons
                     size={18}
                     name="logo-twitter"
@@ -119,7 +125,8 @@ const Settings = () => {
                   radius={sizes.m}
                   color="rgba(255,255,255,0.2)"
                   outlined={String(colors.white)}
-                  onPress={() => handleSocialLink('dribbble')}>
+                  onPress={() => handleSocialLink("dribbble")}
+                >
                   <Ionicons
                     size={18}
                     name="logo-dribbble"
@@ -137,7 +144,8 @@ const Settings = () => {
             shadow={!isAndroid} // disabled shadow on Android due to blur overlay + elevation issue
             marginTop={-sizes.l}
             marginHorizontal="8%"
-            color="rgba(255,255,255,0.2)">
+            color="rgba(255,255,255,0.2)"
+          >
             <Block
               row
               blur
@@ -148,18 +156,19 @@ const Settings = () => {
               tint={colors.blurTint}
               justify="space-evenly"
               paddingVertical={sizes.sm}
-              renderToHardwareTextureAndroid>
+              renderToHardwareTextureAndroid
+            >
               <Block align="center">
                 <Text h5>{user?.stats?.posts}</Text>
-                <Text>{t('profile.posts')}</Text>
+                <Text>{t("profile.posts")}</Text>
               </Block>
               <Block align="center">
                 <Text h5>{(user?.stats?.followers || 0) / 1000}k</Text>
-                <Text>{t('profile.followers')}</Text>
+                <Text>{t("profile.followers")}</Text>
               </Block>
               <Block align="center">
                 <Text h5>{(user?.stats?.following || 0) / 1000}k</Text>
-                <Text>{t('profile.following')}</Text>
+                <Text>{t("profile.following")}</Text>
               </Block>
             </Block>
           </Block>
@@ -167,7 +176,7 @@ const Settings = () => {
           {/* profile: about me */}
           <Block paddingHorizontal={sizes.sm}>
             <Text h5 semibold marginBottom={sizes.s} marginTop={sizes.sm}>
-              {t('profile.aboutMe')}
+              {t("profile.aboutMe")}
             </Text>
             <Text p lineHeight={26}>
               {user?.about}
@@ -178,11 +187,11 @@ const Settings = () => {
           <Block paddingHorizontal={sizes.sm} marginTop={sizes.s}>
             <Block row align="center" justify="space-between">
               <Text h5 semibold>
-                {t('common.album')}
+                {t("common.album")}
               </Text>
               <Button>
                 <Text p primary semibold>
-                  {t('common.viewall')}
+                  {t("common.viewall")}
                 </Text>
               </Button>
             </Block>

@@ -1,33 +1,33 @@
-import React, {useEffect} from 'react';
-import {Platform, StatusBar} from 'react-native';
-import {useFonts} from 'expo-font';
-import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
-import * as SplashScreen from 'expo-splash-screen';
-import Menu from './Menu';
-import {useData, ThemeProvider, TranslationProvider} from '../hooks';
-import Login from '../screens/Login';
+import React, { useEffect } from "react";
+import { Platform, StatusBar } from "react-native";
+import { useFonts } from "expo-font";
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
+import * as SplashScreen from "expo-splash-screen";
+import Menu from "./Menu";
+import { useData, ThemeProvider, TranslationProvider } from "../hooks";
+import Login from "../screens/Login";
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
 export default () => {
-  const {isDark, theme, setTheme} = useData();
+  const { isDark, theme, setTheme } = useData();
 
   /* set the status bar based on isDark constant */
   useEffect(() => {
-    Platform.OS === 'android' && StatusBar.setTranslucent(true);
-    StatusBar.setBarStyle(isDark ? 'light-content' : 'dark-content');
+    Platform.OS === "android" && StatusBar.setTranslucent(true);
+    StatusBar.setBarStyle(isDark ? "light-content" : "dark-content");
     return () => {
-      StatusBar.setBarStyle('default');
+      StatusBar.setBarStyle("default");
     };
   }, [isDark]);
 
   // load custom fonts
   const [fontsLoaded] = useFonts({
-    'OpenSans-Light': theme.assets.OpenSansLight,
-    'OpenSans-Regular': theme.assets.OpenSansRegular,
-    'OpenSans-SemiBold': theme.assets.OpenSansSemiBold,
-    'OpenSans-ExtraBold': theme.assets.OpenSansExtraBold,
-    'OpenSans-Bold': theme.assets.OpenSansBold,
+    "OpenSans-Light": theme.assets.OpenSansLight,
+    "OpenSans-Regular": theme.assets.OpenSansRegular,
+    "OpenSans-SemiBold": theme.assets.OpenSansSemiBold,
+    "OpenSans-ExtraBold": theme.assets.OpenSansExtraBold,
+    "OpenSans-Bold": theme.assets.OpenSansBold,
   });
 
   if (fontsLoaded) {
@@ -46,7 +46,7 @@ export default () => {
     dark: isDark,
     colors: {
       ...DefaultTheme.colors,
-      border: 'rgba(0,0,0,0)',
+      border: "rgba(0,0,0,0)",
       text: String(theme.colors.text),
       card: String(theme.colors.card),
       primary: String(theme.colors.primary),

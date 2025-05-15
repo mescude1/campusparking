@@ -1,8 +1,6 @@
 # [Soft UI React Native](https://demos.creative-tim.com/soft-ui-react-native/index.html) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/home?status=soft-ui%20React%20Native,%20a%20cool%20NowUI%20React%20Native%20App%20Template%20%E2%9D%A4%EF%B8%8F%20https%3A//bit.ly/2KAj86H%20%23reactnative%20%23NowUI%20%23designsystem%20%23developers%20via%20%40CreativeTim)
 
-
- ![version](https://img.shields.io/badge/version-1.1.0-blue.svg)  [![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/ct-soft-ui-react-native.svg?style=flat)](https://github.com/creativetimofficial/ct-soft-ui-react-native/issues?q=is%3Aopen+is%3Aissue) [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/ct-soft-ui-react-native.svg?maxAge=2592000)](https://github.com/creativetimofficial/ct-soft-ui-react-native/issues?q=is%3Aissue+is%3Aclosed)
-
+![version](https://img.shields.io/badge/version-1.1.0-blue.svg) [![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/ct-soft-ui-react-native.svg?style=flat)](https://github.com/creativetimofficial/ct-soft-ui-react-native/issues?q=is%3Aopen+is%3Aissue) [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/ct-soft-ui-react-native.svg?maxAge=2592000)](https://github.com/creativetimofficial/ct-soft-ui-react-native/issues?q=is%3Aissue+is%3Aclosed)
 
 ![Product](https://s3.amazonaws.com/creativetim_bucket/products/490/original/opt_soft_ui_react_native_thumbnail.jpg)
 
@@ -17,57 +15,59 @@ Soft UI React Native features over 100 variations of components like buttons, in
 You will save a lot of time going from prototyping to full-functional code, because all elements are implemented. We wanted the design process to be seamless, so switching from image to the real page is very easy to do.
 
 ### Components & Cards
+
 Soft UI React Native comes packed with a large number of components and cards. Putting together a mobile app has never been easier than matching together different components. From the profile screen to a settings screen, you can easily customise and build your screens. We have created multiple options for you to put together and customise into pixel perfect screens.
 
 View [all components here](https://demos.creative-tim.com/soft-ui-react-native/).
 
 ### Example Screens
+
 If you want to get inspiration or just show something directly to your clients, you can jump start your development with our pre-built example screens. From onboarding screens to profile or discover screens, you will be able to quickly set up the basic structure for your React Native mobile project.
 
 View [all screens here](https://demos.creative-tim.com/soft-ui-react-native/#screens).
 
-
 Let us know your thoughts below. And good luck with development!
-
 
 ## Table of Contents
 
-* [Versions](#versions)
-* [Demo](#demo)
-* [Quick Start](#quick-start)
-* [Documentation](#documentation)
-* [File Structure](#file-structure)
-* [OS Support](#os-support)
-* [Resources](#resources)
-* [Reporting Issues](#reporting-issues)
-* [Technical Support or Questions](#technical-support-or-questions)
-* [Licensing](#licensing)
-* [Useful Links](#useful-links)
+- [Versions](#versions)
+- [Demo](#demo)
+- [Quick Start](#quick-start)
+- [Documentation](#documentation)
+- [File Structure](#file-structure)
+- [OS Support](#os-support)
+- [Resources](#resources)
+- [Reporting Issues](#reporting-issues)
+- [Technical Support or Questions](#technical-support-or-questions)
+- [Licensing](#licensing)
+- [Useful Links](#useful-links)
 
 ## Versions
 
 [<img src="https://github.com/creativetimofficial/public-assets/blob/master/logos/html-logo.jpg?raw=true" width="60" height="60" />](https://www.creative-tim.com/product/soft-ui-kit-pro)[<img src="https://github.com/creativetimofficial/public-assets/blob/master/logos/react-native-logo.jpg?raw=true" width="60" height="60" />](https://www.creative-tim.com/product/soft-ui-react-native)
 
-| HTML | React-Native  |
-| --- | --- |
-| [![Soft UI Kit](https://s3.amazonaws.com/creativetim_bucket/products/448/original/opt_sds_free_thumbnail.jpg?1614876201)](https://www.creative-tim.com/product/soft-ui-design-system)  | [![Soft UI React-Native](https://s3.amazonaws.com/creativetim_bucket/products/490/original/opt_soft_ui_react_native_thumbnail.jpg?1625576346)](https://www.creative-tim.com/product/soft-ui-react-native) |
+| HTML                                                                                                                                                                                  | React-Native                                                                                                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [![Soft UI Kit](https://s3.amazonaws.com/creativetim_bucket/products/448/original/opt_sds_free_thumbnail.jpg?1614876201)](https://www.creative-tim.com/product/soft-ui-design-system) | [![Soft UI React-Native](https://s3.amazonaws.com/creativetim_bucket/products/490/original/opt_soft_ui_react_native_thumbnail.jpg?1625576346)](https://www.creative-tim.com/product/soft-ui-react-native) |
 
 ## Demo
+
 - [Start page](https://demos.creative-tim.com/soft-ui-react-native)
 - [Quick start](https://www.creative-tim.com/learning-lab/react-native/quick-start/soft)
 
 [View more](https://demos.creative-tim.com/soft-ui-react-native)
 
 ## Quick start
+
 - Try it out on Expo (Simulator for iOS or even your physical device if you have an Android)
 - Download from [Creative Tim](https://www.creative-tim.com/product/soft-ui-react-native)
 
-
 ## Documentation
+
 The documentation for the Soft UI React Native is hosted at our [website](https://www.creative-tim.com/learning-lab/react-native/overview/soft).
 
-
 ## File Structure
+
 Within the download you'll find the following directories and files:
 
 ```
@@ -129,7 +129,6 @@ soft-ui-react-native/
 └── tsconfig.json
 ```
 
-
 ## OS Support
 
 At present, we officially aim to support the last two versions of the following operating systems:
@@ -137,6 +136,7 @@ At present, we officially aim to support the last two versions of the following 
 [<img src="https://raw.githubusercontent.com/creativetimofficial/ct-material-kit-pro-react-native/master/assets/android-logo.png" width="60" height="60" />](https://www.creative-tim.com/product/soft-ui-react-native)[<img src="https://raw.githubusercontent.com/creativetimofficial/ct-material-kit-pro-react-native/master/assets/apple-logo.png" width="60" height="60" />](https://www.creative-tim.com/product/soft-ui-react-native)
 
 ## Resources
+
 - Demo: <https://demos.creative-tim.com/soft-ui-react-native>
 - Download Page: <https://www.creative-tim.com/product/soft-ui-react-native>
 - Documentation: <https://www.creative-tim.com/learning-lab/react-native/overview/soft>
@@ -153,11 +153,9 @@ We use GitHub Issues as the official bug tracker for the Soft UI React Native. H
 2. Providing us reproducible steps for the issue will shorten the time it takes for it to be fixed.
 3. Some issues may be browser specific, so specifying in what browser you encountered the issue might help.
 
-
 ### Technical Support or Questions
 
 If you have questions or need help integrating the product please [contact us](https://www.creative-tim.com/contact-us) instead of opening an issue.
-
 
 ## Licensing
 
@@ -177,8 +175,8 @@ If you have questions or need help integrating the product please [contact us](h
 - [More products](https://www.creative-tim.com/bootstrap-themes) from Creative Tim
 - Check our Bundles [here](https://www.creative-tim.com/bundles?ref=soft-ui-github-readme)
 
-
 ### Social Media
+
 Twitter: <https://twitter.com/CreativeTim>
 Facebook: <https://www.facebook.com/CreativeTim>
 Dribbble: <https://dribbble.com/creativetim>

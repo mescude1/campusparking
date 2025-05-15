@@ -1,12 +1,12 @@
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
-import { useCallback, useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
-import Button from '../components/Button'
+import { View, Text, FlatList, TouchableOpacity } from "react-native";
+import { useCallback, useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+import Button from "../components/Button";
 
 const trips = [
-  { id: '1', driver: 'Pablo Marin', price: '$8000', date: '2024-04-01' },
-  { id: '2', driver: 'Juan Restrepo', price: '$14500', date: '2024-03-25' },
-  { id: '3', driver: 'Carlos Lopez', price: '$17000', date: '2024-03-18' },
+  { id: "1", driver: "Pablo Marin", price: "$8000", date: "2024-04-01" },
+  { id: "2", driver: "Juan Restrepo", price: "$14500", date: "2024-03-25" },
+  { id: "3", driver: "Carlos Lopez", price: "$17000", date: "2024-03-18" },
 ];
 
 const LatestTrips = () => {
@@ -22,8 +22,12 @@ const LatestTrips = () => {
   );
 
   return (
-    <View style={{ flex: 1, paddingTop: 20, paddingHorizontal: 5, width: '100%' }}>
-      <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 10 }}>Ultimos Servicios</Text>
+    <View
+      style={{ flex: 1, paddingTop: 20, paddingHorizontal: 5, width: "100%" }}
+    >
+      <Text style={{ fontSize: 18, fontWeight: "bold", marginBottom: 10 }}>
+        Ultimos Servicios
+      </Text>
 
       <View style={{ flex: 1 }}>
         <FlatList
@@ -32,19 +36,35 @@ const LatestTrips = () => {
           renderItem={({ item }) => (
             <View
               style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                width: '100%', // Ensures full width
+                flexDirection: "row",
+                alignItems: "center",
+                width: "100%", // Ensures full width
                 paddingVertical: 10,
                 borderBottomWidth: 1,
-                borderBottomColor: '#ddd',
+                borderBottomColor: "#ddd",
               }}
             >
-              <Text style={{ flex: 1, textAlign: 'left', fontSize: 16 }}>{item.driver}</Text>
-              <Text style={{ flex: 1, textAlign: 'center', fontSize: 16, fontWeight: 'bold' }}>
+              <Text style={{ flex: 1, textAlign: "left", fontSize: 16 }}>
+                {item.driver}
+              </Text>
+              <Text
+                style={{
+                  flex: 1,
+                  textAlign: "center",
+                  fontSize: 16,
+                  fontWeight: "bold",
+                }}
+              >
                 {item.price}
               </Text>
-              <Text style={{ flex: 1, textAlign: 'right', fontSize: 14, color: 'gray' }}>
+              <Text
+                style={{
+                  flex: 1,
+                  textAlign: "right",
+                  fontSize: 14,
+                  color: "gray",
+                }}
+              >
                 {item.date}
               </Text>
             </View>
@@ -53,17 +73,17 @@ const LatestTrips = () => {
       </View>
 
       <Button
-        onPress={() => handleNavigation('PastServicesList')}
-        color='#000066'
+        onPress={() => handleNavigation("PastServicesList")}
+        color="#000066"
         style={{
           marginTop: 10,
           padding: 10,
-          backgroundColor: '#007bff',
+          backgroundColor: "#007bff",
           borderRadius: 5,
-          alignSelf: 'flex-end', // Makes the button full width
+          alignSelf: "flex-end", // Makes the button full width
         }}
       >
-        <Text style={{ color: 'white', textAlign: 'center' }}>Ver Todos</Text>
+        <Text style={{ color: "white", textAlign: "center" }}>Ver Todos</Text>
       </Button>
     </View>
   );

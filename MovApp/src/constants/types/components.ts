@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   Animated,
   ColorValue,
@@ -14,11 +14,11 @@ import {
   TouchableOpacityProps,
   ViewProps,
   ViewStyle,
-} from 'react-native';
+} from "react-native";
 
-import {BlurProps} from 'expo-blur';
-import {LinearGradientPoint} from 'expo-linear-gradient';
-import {ISpacing, ITheme} from './theme';
+import { BlurViewProps as BlurProps } from "expo-blur";
+import { LinearGradientPoint } from "expo-linear-gradient";
+import { ISpacing, ITheme } from "./theme";
 
 /**
  * ## Block
@@ -42,7 +42,7 @@ export interface IBlockProps
    * @see https://reactnative.dev/docs/flexbox#proptypes
    * @see https://reactnative.dev/docs/layout-props
    */
-  flex?: ViewStyle['flex'];
+  flex?: ViewStyle["flex"];
   /**
    * Renders a View flexDirection: row style
    * @see https://reactnative.dev/docs/flexbox#flex-direction
@@ -52,7 +52,7 @@ export interface IBlockProps
    * Renders a View flexWrap style
    * @see https://reactnative.dev/docs/flexbox#flex-wrap
    */
-  wrap?: ViewStyle['flexWrap'];
+  wrap?: ViewStyle["flexWrap"];
   /**
    * Renders a SafeAreaView component
    * @see https://reactnative.dev/docs/safeareaview
@@ -96,12 +96,12 @@ export interface IBlockProps
    * Renders a View style overflow
    * @see https://reactnative.dev/docs/layout-props#overflow
    */
-  overflow?: ViewStyle['overflow'];
+  overflow?: ViewStyle["overflow"];
   /**
    * Renders a custom backgroundColor
    * @see https://reactnative.dev/docs/view-style-props#backgroundcolor
    */
-  color?: ViewStyle['backgroundColor'];
+  color?: ViewStyle["backgroundColor"];
   /**
    * Renders LinearGradient component, colors
    * @see https://docs.expo.io/versions/latest/sdk/linear-gradient/#props
@@ -161,29 +161,29 @@ export interface IBlockProps
    * Renders a custom borderRadius value
    * @see https://reactnative.dev/docs/view-style-props#borderradius
    */
-  radius?: ViewStyle['borderRadius'];
+  radius?: ViewStyle["borderRadius"];
   /**
    * Renders a custom height value
    * @see https://reactnative.dev/docs/layout-props#height
    */
-  height?: ViewStyle['height'];
+  height?: ViewStyle["height"];
   /**
    * Renders a custom width value
    * @see https://reactnative.dev/docs/layout-props#width
    */
-  width?: ViewStyle['width'];
+  width?: ViewStyle["width"];
   /**
    * Renders a flex justifyContent
    * Available values: 'flex-start', 'flex-end', 'center', 'space-between', 'space-around', 'space-evenly'
    * @see https://reactnative.dev/docs/layout-props#justifycontent
    */
-  justify?: ViewStyle['justifyContent'];
+  justify?: ViewStyle["justifyContent"];
   /**
    * Renders a flex alignItems
    * Available values: 'auto', 'flex-start', 'flex-end', 'center', 'stretch', 'baseline'
    * @see https://reactnative.dev/docs/layout-props#alignitems
    */
-  align?: ViewStyle['alignItems'];
+  align?: ViewStyle["alignItems"];
   /**
    * Renders the View content
    */
@@ -197,37 +197,37 @@ export interface IBlockProps
    * BlueView intensity, default: 50, values accepted: 1 to 100
    * @see https://docs.expo.io/versions/latest/sdk/blur-view/#intensity
    */
-  intensity?: BlurProps['intensity'];
+  intensity?: BlurProps["intensity"];
   /**
    * BlueView tint color, default: 'default', values accepted: 'light', 'dark', 'default'
    * @see https://docs.expo.io/versions/latest/sdk/blur-view/#blurtint
    */
-  tint?: BlurProps['tint'];
+  tint?: BlurProps["tint"];
   /**
    * Renders the View position
    * @see https://reactnative.dev/docs/layout-props#position
    */
-  position?: ViewStyle['position'];
+  position?: ViewStyle["position"];
   /**
    * Renders the View right offset
    * @see https://reactnative.dev/docs/layout-props#right
    */
-  right?: ViewStyle['right'];
+  right?: ViewStyle["right"];
   /**
    * Renders the View left offset
    * @see https://reactnative.dev/docs/layout-props#left
    */
-  left?: ViewStyle['left'];
+  left?: ViewStyle["left"];
   /**
    * Renders the View top offset
    * @see https://reactnative.dev/docs/layout-props#top
    */
-  top?: ViewStyle['top'];
+  top?: ViewStyle["top"];
   /**
    * Renders the View bottom offset
    * @see https://reactnative.dev/docs/layout-props#bottom
    */
-  bottom?: ViewStyle['bottom'];
+  bottom?: ViewStyle["bottom"];
   /**
    * Renders LinearGradient start points
    * @see https://docs.expo.io/versions/latest/sdk/linear-gradient/#props
@@ -269,17 +269,17 @@ export interface IButtonProps extends TouchableOpacityProps, ISpacing {
    * @see https://reactnative.dev/docs/flexbox#proptypes
    * @see https://reactnative.dev/docs/layout-props
    */
-  flex?: ViewStyle['flex'];
+  flex?: ViewStyle["flex"];
   /**
    * Renders a custom borderRadius value
    * @see https://reactnative.dev/docs/view-style-props#borderradius
    */
-  radius?: ViewStyle['borderRadius'];
+  radius?: ViewStyle["borderRadius"];
   /**
    * Renders a custom backgroundColor value
    * @see https://reactnative.dev/docs/view-style-props#backgroundcolor
    */
-  color?: ViewStyle['backgroundColor'];
+  color?: ViewStyle["backgroundColor"];
   /**
    * Renders LinearGradient component, colors
    * @see https://docs.expo.io/versions/latest/sdk/linear-gradient/#props
@@ -355,23 +355,23 @@ export interface IButtonProps extends TouchableOpacityProps, ISpacing {
    * Available values: 'auto', 'flex-start', 'flex-end', 'center', 'stretch', 'baseline'
    * @see https://reactnative.dev/docs/layout-props#alignitems
    */
-  align?: ViewStyle['alignItems'];
+  align?: ViewStyle["alignItems"];
   /**
    * Renders a flex justifyContent
    * Available values: 'flex-start', 'flex-end', 'center', 'space-between', 'space-around', 'space-evenly'
    * @see https://reactnative.dev/docs/layout-props#justifycontent
    */
-  justify?: ViewStyle['justifyContent'];
+  justify?: ViewStyle["justifyContent"];
   /**
    * Renders a custom height value
    * @see https://reactnative.dev/docs/layout-props#height
    */
-  height?: ViewStyle['height'];
+  height?: ViewStyle["height"];
   /**
    * Renders a custom width value
    * @see https://reactnative.dev/docs/layout-props#width
    */
-  width?: ViewStyle['width'];
+  width?: ViewStyle["width"];
   /**
    * Renders the container style with predefined borderWidth: 1, backgroundColor: 'transparent' & borderColor inherited
    */
@@ -386,32 +386,32 @@ export interface IButtonProps extends TouchableOpacityProps, ISpacing {
    * @see https://docs.expo.io/guides/icons/
    * @see https://icons.expo.fyi
    */
-  social?: 'facebook' | 'twitter' | 'dribbble';
+  social?: "facebook" | "twitter" | "dribbble";
   /**
    * Renders the View position
    * @see https://reactnative.dev/docs/layout-props#position
    */
-  position?: ViewStyle['position'];
+  position?: ViewStyle["position"];
   /**
    * Renders the View right offset
    * @see https://reactnative.dev/docs/layout-props#right
    */
-  right?: ViewStyle['right'];
+  right?: ViewStyle["right"];
   /**
    * Renders the View left offset
    * @see https://reactnative.dev/docs/layout-props#left
    */
-  left?: ViewStyle['left'];
+  left?: ViewStyle["left"];
   /**
    * Renders the View top offset
    * @see https://reactnative.dev/docs/layout-props#top
    */
-  top?: ViewStyle['top'];
+  top?: ViewStyle["top"];
   /**
    * Renders the View bottom offset
    * @see https://reactnative.dev/docs/layout-props#bottom
    */
-  bottom?: ViewStyle['bottom'];
+  bottom?: ViewStyle["bottom"];
   /**
    * Provides haptic feedback on touch - Haptics.selectionAsync()
    * @see https://docs.expo.io/versions/latest/sdk/haptics/
@@ -503,17 +503,17 @@ export interface IImageProps extends ImageProps, ISpacing {
    * Renders a custom borderRadius value
    * @see https://reactnative.dev/docs/image-style-props#borderradius
    */
-  radius?: ImageStyle['borderRadius'];
+  radius?: ImageStyle["borderRadius"];
   /**
    * Changes the color of all the non-transparent pixels to the tintColor.
    * @see https://reactnative.dev/docs/image-style-props#tintcolor
    */
-  color?: ImageStyle['tintColor'];
+  color?: ImageStyle["tintColor"];
   /**
    * Modify the appearance and position of your components using 2D or 3D transformations
    * @see https://reactnative.dev/docs/transforms#transform
    */
-  transform?: ImageStyle['transform'];
+  transform?: ImageStyle["transform"];
   /**
    * Renders the Image component with custom style, overwrite existing/predefined styles
    * @see https://reactnative.dev/docs/image#style
@@ -609,7 +609,7 @@ export interface IInputProps extends TextInputProps, ISpacing {
   /**
    * Renders a left side icon image from the Theme assets
    */
-  icon?: keyof ITheme['assets'];
+  icon?: keyof ITheme["assets"];
   /**
    * Renders the TextInput content
    */
@@ -701,7 +701,7 @@ export interface ISwitchProps extends ISpacing {
   /**
    * Duration in ms for thumb animated position
    */
-  duration?: Animated.TimingAnimationConfig['duration'];
+  duration?: Animated.TimingAnimationConfig["duration"];
 }
 
 /**
@@ -781,22 +781,22 @@ export interface ITextProps extends TextProps, ISpacing {
    * Renders a Text custom color value
    * @see https://reactnative.dev/docs/text-style-props#color
    */
-  color?: TextStyle['color'];
+  color?: TextStyle["color"];
   /**
    * Renders a Text with custom opacity value
    * @see https://reactnative.dev/docs/view-style-props#opacity
    */
-  opacity?: TextStyle['opacity'];
+  opacity?: TextStyle["opacity"];
   /**
    * Renders a Text with custom fontSize
    * @see https://reactnative.dev/docs/text-style-props#fontsize
    */
-  size?: ITheme['sizes'] | string | number;
+  size?: ITheme["sizes"] | string | number;
   /**
    * Renders a Text with custom fontWeight
    * @see https://reactnative.dev/docs/text-style-props#fontweight
    */
-  weight?: TextStyle['fontWeight'];
+  weight?: TextStyle["fontWeight"];
   /**
    * Renders a Text with custom fontFamily
    * @see https://reactnative.dev/docs/text-style-props#fontfamily
@@ -856,42 +856,42 @@ export interface ITextProps extends TextProps, ISpacing {
    * Renders a Text with custom textAlign
    * @see https://reactnative.dev/docs/text-style-props#textalign
    */
-  align?: TextStyle['textAlign'];
+  align?: TextStyle["textAlign"];
   /**
    * Renders a Text with custom textTransform: 'none', 'uppercase', 'lowercase', 'capitalize'
    * @see https://reactnative.dev/docs/text-style-props#texttransform
    */
-  transform?: TextStyle['textTransform'];
+  transform?: TextStyle["textTransform"];
   /**
    * Renders a Text with custom lineHeight
    * @see https://reactnative.dev/docs/text-style-props#lineheight
    */
-  lineHeight?: TextStyle['lineHeight'];
+  lineHeight?: TextStyle["lineHeight"];
   /**
    * Renders text right offset
    * @see https://reactnative.dev/docs/layout-props#right
    */
-  right?: TextStyle['right'];
+  right?: TextStyle["right"];
   /**
    * Renders the View left offset
    * @see https://reactnative.dev/docs/layout-props#left
    */
-  left?: TextStyle['left'];
+  left?: TextStyle["left"];
   /**
    * Renders the View top offset
    * @see https://reactnative.dev/docs/layout-props#top
    */
-  top?: TextStyle['top'];
+  top?: TextStyle["top"];
   /**
    * Renders the View bottom offset
    * @see https://reactnative.dev/docs/layout-props#bottom
    */
-  bottom?: TextStyle['bottom'];
+  bottom?: TextStyle["bottom"];
   /**
    * Renders text position
    * @see https://reactnative.dev/docs/layout-props#position
    */
-  position?: TextStyle['position'];
+  position?: TextStyle["position"];
   /**
    * Renders a Text component to display text
    * Supports nesting, styling, and touch handling.

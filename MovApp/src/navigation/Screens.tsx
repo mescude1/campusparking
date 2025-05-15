@@ -1,13 +1,21 @@
-import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
 
-import {Home, Components, PastServicesList} from '../screens';
-import {useScreenOptions, useTranslation} from '../hooks';
+import {
+  Home,
+  Components,
+  PastServicesList,
+  Articles,
+  Profile,
+  Register,
+  Login,
+} from "../screens";
+import { useScreenOptions, useTranslation } from "../hooks";
 
 const Stack = createStackNavigator();
 
 export default () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const screenOptions = useScreenOptions();
 
   return (
@@ -15,27 +23,27 @@ export default () => {
       <Stack.Screen
         name="Home"
         component={Home}
-        options={{title: t('navigation.home')}}
+        options={{ title: t("navigation.home") }}
       />
       <Stack.Screen
         name="Ultimos Servicios"
         component={Articles}
-        options={{title: t('navigation.past_services_list')}}
+        options={{ title: t("navigation.past_services_list") }}
       />
       <Stack.Screen
         name="Perfil"
         component={Profile}
-        options={{headerShown: false, title: t('navigation.profile')}}
+        options={{ headerShown: false, title: t("navigation.profile") }}
       />
       <Stack.Screen
         name="Register"
         component={Register}
-        options={{headerShown: false, title: t('navigation.register')}}
+        options={{ headerShown: false, title: t("navigation.register") }}
       />
       <Stack.Screen
         name="Login"
         component={Login}
-        options={{headerShown: false, title: t('navigation.login')}}
+        options={{ headerShown: false, title: t("navigation.login") }}
       />
     </Stack.Navigator>
   );
