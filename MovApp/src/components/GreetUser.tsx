@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Platform,
   SafeAreaView,
@@ -7,22 +7,22 @@ import {
   View,
   ViewStyle,
   Text,
-} from 'react-native';
-import { BlurView } from 'expo-blur';
-import { LinearGradient } from 'expo-linear-gradient';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+} from "react-native";
+import { BlurView } from "expo-blur";
+import { LinearGradient } from "expo-linear-gradient";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-import useTheme from '../hooks/useTheme';
-import { IBlockProps } from '../constants/types';
+import useTheme from "../hooks/useTheme";
+import { IBlockProps } from "../constants/types";
 
 // Mock data for user
 const mockUser = {
-  username: 'Pablo Perez',
+  username: "Pablo Perez",
 };
 
 const GreetUser = (props: IBlockProps) => {
   const {
-    id = 'GreetUser',
+    id = "GreetUser",
     style,
     safe,
     keyboard,
@@ -36,13 +36,10 @@ const GreetUser = (props: IBlockProps) => {
   } = props;
   const { colors } = useTheme();
 
-  const blockStyles = StyleSheet.flatten([
-    style,
-    { padding: 5, },
-  ]) as ViewStyle;
+  const blockStyles = StyleSheet.flatten([style, { padding: 5 }]) as ViewStyle;
 
   const blockID =
-    Platform.OS === 'android' ? { accessibilityLabel: id } : { testID: id };
+    Platform.OS === "android" ? { accessibilityLabel: id } : { testID: id };
 
   const greetingText = `Hola! ${mockUser.username}`;
 
@@ -75,7 +72,12 @@ const GreetUser = (props: IBlockProps) => {
 
   if (gradient) {
     return (
-      <LinearGradient {...blockID} colors={gradient} style={blockStyles} {...rest}>
+      <LinearGradient
+        {...blockID}
+        colors={gradient}
+        style={blockStyles}
+        {...rest}
+      >
         <Text style={styles.text}>{greetingText}</Text>
         {children}
       </LinearGradient>
@@ -84,7 +86,12 @@ const GreetUser = (props: IBlockProps) => {
 
   if (blur) {
     return (
-      <BlurView {...blockID} tint={tint} intensity={intensity} style={blockStyles}>
+      <BlurView
+        {...blockID}
+        tint={tint}
+        intensity={intensity}
+        style={blockStyles}
+      >
         <Text style={styles.text}>{greetingText}</Text>
         {children}
       </BlurView>
@@ -102,9 +109,9 @@ const GreetUser = (props: IBlockProps) => {
 const styles = StyleSheet.create({
   text: {
     fontSize: 18,
-    fontWeight: 'bold',
-    color: '#333',
-    textAlign: 'center',
+    fontWeight: "bold",
+    color: "#333",
+    textAlign: "center",
   },
 });
 

@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { View, Text, FlatList, ActivityIndicator } from 'react-native';
+import { useState, useEffect } from "react";
+import { View, Text, FlatList, ActivityIndicator } from "react-native";
 
 const PAGE_SIZE = 10;
 
@@ -16,7 +16,7 @@ const fetchTrips = (page: number): Promise<Trip[]> => {
     setTimeout(() => {
       const newTrips = Array.from({ length: PAGE_SIZE }, (_, index) => ({
         id: `${page * PAGE_SIZE + index + 1}`,
-        date: `2024-04-${((index % 30) + 1).toString().padStart(2, '0')}`,
+        date: `2024-04-${((index % 30) + 1).toString().padStart(2, "0")}`,
         driver: `Driver ${page * PAGE_SIZE + index + 1}`,
         price: `$${(Math.random() * 200 + 50).toFixed(2)}`,
       }));
@@ -48,21 +48,31 @@ const PaginatedTrips = () => {
 
   return (
     <View style={{ flex: 1, padding: 20 }}>
-      <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 10 }}>Latest Trips</Text>
+      <Text style={{ fontSize: 18, fontWeight: "bold", marginBottom: 10 }}>
+        Latest Trips
+      </Text>
 
       <FlatList
         data={trips}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <View style={{ padding: 10, borderBottomWidth: 1, borderBottomColor: '#ddd' }}>
+          <View
+            style={{
+              padding: 10,
+              borderBottomWidth: 1,
+              borderBottomColor: "#ddd",
+            }}
+          >
             <Text style={{ fontSize: 16 }}>{item.date}</Text>
-            <Text style={{ color: 'gray' }}>Driver: {item.driver}</Text>
-            <Text style={{ fontWeight: 'bold' }}>Price: {item.price}</Text>
+            <Text style={{ color: "gray" }}>Driver: {item.driver}</Text>
+            <Text style={{ fontWeight: "bold" }}>Price: {item.price}</Text>
           </View>
         )}
         onEndReached={loadTrips}
         onEndReachedThreshold={0.1}
-        ListFooterComponent={loading ? <ActivityIndicator size="small" color="#007bff" /> : null}
+        ListFooterComponent={
+          loading ? <ActivityIndicator size="small" color="#007bff" /> : null
+        }
       />
     </View>
   );

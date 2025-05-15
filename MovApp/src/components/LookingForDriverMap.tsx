@@ -1,11 +1,18 @@
 // components/LookingForDriverMap.tsx
 
-import React, { useEffect, useRef, useState } from 'react';
-import { View, Text, StyleSheet, Animated, Image, Dimensions } from 'react-native';
-import MapView, { Marker, PROVIDER_GOOGLE, Region } from 'react-native-maps';
-import * as Location from 'expo-location';
+import React, { useEffect, useRef, useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Animated,
+  Image,
+  Dimensions,
+} from "react-native";
+import MapView, { Marker, PROVIDER_GOOGLE, Region } from "react-native-maps";
+import * as Location from "expo-location";
 
-const { width } = Dimensions.get('window');
+const { width } = Dimensions.get("window");
 
 const mockDrivers = [
   { id: 1, latitudeDelta: 0.002, longitudeDelta: 0.002 },
@@ -20,7 +27,7 @@ export default function LookingForDriverMap() {
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') return;
+      if (status !== "granted") return;
 
       let location = await Location.getCurrentPositionAsync({});
       setRegion({
@@ -51,7 +58,7 @@ export default function LookingForDriverMap() {
 
   const rotate = swingAnim.interpolate({
     inputRange: [-1, 1],
-    outputRange: ['-15deg', '15deg'],
+    outputRange: ["-15deg", "15deg"],
   });
 
   return (
@@ -80,7 +87,7 @@ export default function LookingForDriverMap() {
       <View style={styles.overlayCard}>
         <Text style={styles.cardText}>Looking for driver...</Text>
         <Animated.Image
-          source={require('../assets/keys.png')} // Place a keys.png file in assets
+          source={require("../assets/keys.png")} // Place a keys.png file in assets
           style={[styles.keysIcon, { transform: [{ rotate }] }]}
         />
       </View>
@@ -91,23 +98,23 @@ export default function LookingForDriverMap() {
 const styles = StyleSheet.create({
   container: { flex: 1 },
   overlayCard: {
-    position: 'absolute',
+    position: "absolute",
     top: 60,
-    alignSelf: 'center',
-    backgroundColor: 'white',
+    alignSelf: "center",
+    backgroundColor: "white",
     padding: 20,
     borderRadius: 16,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     elevation: 4,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOpacity: 0.3,
     shadowRadius: 10,
     shadowOffset: { width: 0, height: 3 },
   },
   cardText: {
     fontSize: 18,
-    fontWeight: '600',
+    fontWeight: "600",
     marginRight: 10,
   },
   keysIcon: {

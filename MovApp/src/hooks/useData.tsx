@@ -1,5 +1,5 @@
-import React, {useCallback, useContext, useEffect, useState} from 'react';
-import Storage from '@react-native-async-storage/async-storage';
+import React, { useCallback, useContext, useEffect, useState } from "react";
+import Storage from "@react-native-async-storage/async-storage";
 
 import {
   IArticle,
@@ -8,7 +8,7 @@ import {
   IUser,
   IUseData,
   ITheme,
-} from '../constants/types';
+} from "../constants/types";
 
 import {
   USERS,
@@ -16,12 +16,12 @@ import {
   VALET_DRIVER,
   CATEGORIES,
   ARTICLES,
-} from '../constants/mocks';
-import {light} from '../constants';
+} from "../constants/mocks";
+import { light } from "../constants";
 
 export const DataContext = React.createContext({});
 
-export const DataProvider = ({children}: {children: React.ReactNode}) => {
+export const DataProvider = ({ children }: { children: React.ReactNode }) => {
   const [isDark, setIsDark] = useState(false);
   const [theme, setTheme] = useState<ITheme>(light);
   const [user, setUser] = useState<IUser>(USERS[0]);
@@ -35,7 +35,7 @@ export const DataProvider = ({children}: {children: React.ReactNode}) => {
   // get isDark mode from storage
   const getIsDark = useCallback(async () => {
     // get preferance gtom storage
-    const isDarkJSON = await Storage.getItem('isDark');
+    const isDarkJSON = await Storage.getItem("isDark");
 
     if (isDarkJSON !== null) {
       // set isDark / compare if has updated
@@ -49,9 +49,9 @@ export const DataProvider = ({children}: {children: React.ReactNode}) => {
       // set isDark / compare if has updated
       setIsDark(payload);
       // save preferance to storage
-      Storage.setItem('isDark', JSON.stringify(payload));
+      Storage.setItem("isDark", JSON.stringify(payload));
     },
-    [setIsDark],
+    [setIsDark]
   );
 
   // handle users / profiles
@@ -59,10 +59,10 @@ export const DataProvider = ({children}: {children: React.ReactNode}) => {
     (payload: IUser[]) => {
       // set users / compare if has updated
       if (JSON.stringify(payload) !== JSON.stringify(users)) {
-        setUsers({...users, ...payload});
+        setUsers({ ...users, ...payload });
       }
     },
-    [users, setUsers],
+    [users, setUsers]
   );
 
   // handle user
@@ -73,7 +73,7 @@ export const DataProvider = ({children}: {children: React.ReactNode}) => {
         setUser(payload);
       }
     },
-    [user, setUser],
+    [user, setUser]
   );
 
   // handle Article
@@ -84,7 +84,7 @@ export const DataProvider = ({children}: {children: React.ReactNode}) => {
         setArticle(payload);
       }
     },
-    [article, setArticle],
+    [article, setArticle]
   );
 
   // get initial data for: isDark & language

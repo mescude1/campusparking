@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, StyleSheet, ViewStyle } from 'react-native';
+import React from "react";
+import { View, StyleSheet, ViewStyle } from "react-native";
 
 interface CenteredContainerProps {
   children?: React.ReactNode;
@@ -16,7 +16,9 @@ const CenteredContainer: React.FC<CenteredContainerProps> = ({
 }) => {
   return (
     <View style={styles.wrapper}>
-      <View style={[styles.container, { marginTop, padding }, style]}>{children}</View>
+      <View style={[styles.container, { marginTop, padding }, style]}>
+        {children}
+      </View>
     </View>
   );
 };
@@ -24,21 +26,21 @@ const CenteredContainer: React.FC<CenteredContainerProps> = ({
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    alignItems: 'center', // Centers the container horizontally
+    alignItems: "center", // Centers the container horizontally
   },
   container: {
     width: 380, // Adjust as needed
     height: 300, // Adjust as needed
-    backgroundColor: 'white',
+    backgroundColor: "white",
     borderRadius: 15,
-    alignItems: 'flex-start', // Aligns contents to the left
-    justifyContent: 'flex-start', // Aligns contents to the top
-    shadowColor: '#000',
+    alignItems: "flex-start", // Aligns contents to the left
+    justifyContent: "flex-start", // Aligns contents to the top
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 4,
     elevation: 5, // Android shadow
-    marginTop: 10
+    marginTop: 10,
   },
 });
 
