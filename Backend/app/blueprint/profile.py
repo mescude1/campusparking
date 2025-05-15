@@ -4,7 +4,6 @@ from werkzeug.security import generate_password_hash
 from app.database import db
 from app.model import User
 
-
 bp_profile = Blueprint('profile', __name__, url_prefix='/profile')
 
 @bp_profile.route('/register', methods=('POST',))
