@@ -57,7 +57,7 @@ def register() -> Response:
 
     return make_response(jsonify({'status': 'success', 'message': 'User registered', 'access_token': access_token}), 201)
 
-@bp_profile.route('/profile', methods=['GET'])
+@bp_profile.route('/user-profile', methods=['GET'])
 @jwt_required()
 def get_profile() -> Response:
     """Obtener datos del perfil del usuario autenticado."""
